@@ -269,6 +269,7 @@ GEM
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
+    mimemagic (0.3.2)
     mini_portile2 (2.1.0)
     minitest (5.10.1)
     multi_json (1.12.1)
@@ -285,6 +286,12 @@ GEM
     paper_trail (6.0.2)
       activerecord (>= 4.0, < 5.2)
       request_store (~> 1.1)
+    paperclip (5.1.0)
+      activemodel (>= 4.2.0)
+      activesupport (>= 4.2.0)
+      cocaine (~> 0.5.5)
+      mime-types
+      mimemagic (~> 0.3.0)
     parser (2.3.3.1)
       ast (~> 2.2)
     path_expander (1.0.1)
@@ -544,6 +551,7 @@ DEPENDENCIES
   meta_request
   normalize-rails
   paper_trail
+  paperclip (~> 5.1)
   pg
   pry-byebug
   pry-doc

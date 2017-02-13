@@ -29,6 +29,7 @@ gem "devise"
 gem "ckeditor"
 gem "devise-bootstrap-views"
 gem "twitter-bootstrap-rails"
+gem 'paperclip', '~> 5.1'
 
 group :assets do
   gem "sass-rails"
