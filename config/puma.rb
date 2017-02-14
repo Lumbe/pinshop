@@ -17,7 +17,7 @@ workers Integer(ENV.fetch("PINSHOP_WEB_CONCURRENCY", 5))
 threads_count = Integer(ENV.fetch("PINSHOP_MAX_THREADS", 5))
 threads(2, threads_count)
 
-port ENV.fetch("PINSHOP_PORT") { 3000 }
+port ENV.fetch("PINSHOP_PORT") { 8080 }
 
 preload_app!
 

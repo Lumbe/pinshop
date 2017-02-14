@@ -71,7 +71,7 @@ guard "migrate" do
   watch("db/seeds.rb")
 end
 
-guard :puma, port: 3000 do
+guard :puma, port: 8080 do
   watch("Gemfile.lock")
   watch(%r{^config|lib|api/.*})
 end
