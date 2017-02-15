@@ -95,5 +95,8 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.action_mailer.default_url_options = { host: ENV.fetch("PINSHOP_APPLICATION_HOST") }
+
+  # ensure anything that would prevent errors from being propagated to the Raven::Rack middleware are disabled (sentry-raven gem)
+  config.action_dispatch.show_exceptions = false
 end
 Rack::Timeout.timeout = (ENV["RACK_TIMEOUT"] || 10).to_i
