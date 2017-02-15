@@ -35,10 +35,10 @@ module Pinshop
     # -- all .rb files in that directory are automatically loaded.
 
     config.active_job.queue_adapter = :delayed_job
+    config.filter_parameters << :password
   end
 end
 
 Raven.configure do |config|
   config.dsn = 'https://5f7da1fb333f456da9523f71b0827c30:2f15e6074a9748388fc335c25abd61c0@sentry.io/138585'
-  config.filter_parameters << :password
 end
