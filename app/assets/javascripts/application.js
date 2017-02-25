@@ -16,5 +16,11 @@
 //= require underscore
 //= require gmaps/google
 //= require ckeditor/init
+//= require select2
+//= require bxslider
+//= require owl.carousel
+//= require jquery.countdown
+//= require jquery.countdown-es
+//= require jquery-ui
 //= require_tree ../../../vendor/assets/javascripts/.
 //= require_tree .

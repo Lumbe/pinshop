@@ -1,0 +1,57 @@
+.container
+  .row
+    .col-sm-3
+    .col-xs-12.col-sm-9.center_column
+      #main-page-slider.owl-carousel.owl-theme
+        = image_tag('theme-images/main-slide')
+        = image_tag('theme-images/main-slide')
+        = image_tag('theme-images/main-slide')
+.container
+  .service
+    .col-xs-12.col-sm-4.service-item
+      .icon
+        = fa_icon('truck 3x')
+      .info
+        %a{:href => "#"}
+          %h3 Бесплатная доставка
+        %span Бесплатно при заказе от 900грн.
+    .col-xs-12.col-sm-4.service-item
+      .icon
+        = fa_icon('usd 3x')
+      .info
+        %a{:href => "#"}
+          %h3 Оплата после получения
+        %span Услуга "Наложенный платеж" от Новой Почты
+    .col-xs-12.col-sm-4.service-item
+      .icon
+        = fa_icon('rocket 3x')
+      .info
+        %a{:href => "#"}
+          %h3 Быстрая отправка
+        %span Отправляем Новой почтой в течении дня
+= render 'trends'
+= render 'new_collection'
+= render 'sale'
+.container
+  .service
+    .col-xs-12.col-sm-4.service-item
+      .icon
+        = fa_icon('truck 3x')
+      .info
+        %a{:href => "#"}
+          %h3 Бесплатная доставка
+        %span Бесплатно при заказе от 900грн.
+    .col-xs-12.col-sm-4.service-item
+      .icon
+        = fa_icon('usd 3x')
+      .info
+        %a{:href => "#"}
+          %h3 Оплата после получения
+        %span Услуга "Наложенный платеж" от Новой Почты
+    .col-xs-12.col-sm-4.service-item
+      .icon
+        = fa_icon('rocket 3x')
+      .info
+        %a{:href => "#"}
+          %h3 Быстрая отправка
+        %span Отправляем Новой почтой в течении дня

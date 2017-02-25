@@ -1,0 +1,83 @@
+#nav-top-menu.nav-top-menu
+  .container
+    .row
+      #box-vertical-megamenus.col-sm-3
+        .box-vertical-megamenus
+          %h4.title
+            %span.title-menu Категории
+            %span.btn-open-mobile.pull-right.home-page
+              %i.fa.fa-bars
+          .vertical-menu-content.is-home
+            %ul.vertical-menu-list
+              %li
+                %a{:href => "#"}
+                  = image_tag('pin-icon', alt: 'Мужская одежда', class: 'icon-menu')
+                  Мужчинам
+              %ul.tree-menu.sub-menu
+                %li
+                  %span
+                    %a{:href => "#"}
+                      Футболки, поло
+                %li
+                  %span
+                    %a{:href => "#"}
+                      Куртки, ветровки
+                %li
+                  %span
+                    %a{:href => "#"}
+                      Кофты, кардиганы
+                %li
+                  %span
+                    %a{:href => "#"}
+                      Спортивные костюмы
+                %li
+                  %span
+                    %a{:href => "#"}
+                      Штаны
+              %li
+                %a{:href => "#"}
+                  = image_tag('pin-icon', alt: 'Женская одежда', class: 'icon-menu')
+                  Женщинам
+              %ul.tree-menu.sub-menu
+                %li
+                  %span
+                    %a{:href => "#"}
+                      Кашемировые пальто
+              %li
+                %a{:href => "#"}
+                  = image_tag('pin-icon', alt: 'Женская одежда', class: 'icon-menu')
+                  Детям
+              %ul.tree-menu.sub-menu
+                %li
+                  %span
+                    %a{:href => "#"}
+                      Шапки, шарфы
+      #main-menu.col-sm-9.main-menu
+        %nav.navbar.navbar-default
+          .container-fluid
+            .navbar-header
+              %button.navbar-toggle.collapsed{"aria-controls" => "navbar", "aria-expanded" => "false", "data-target" => "#navbar", "data-toggle" => "collapse", :type => "button"}
+                %i.fa.fa-bars
+              %a.navbar-brand{:href => "#"} МЕНЮ
+            #navbar.navbar-collapse.collapse
+              %ul.nav.navbar-nav
+                %li
+                  %a{:href => "#"} Главная
+                %li
+                  %a{:href => "category.html"} Распродажа
+                %li
+                  %a{:href => "category.html"} Доставка и оптала
+                %li
+                  %a{:href => "category.html"} Опт
+                %li
+                  %a{:href => "category.html"} Контакты
+                %li
+                  %a{:href => "category.html"} Задать вопрос
+      / userinfo on top
+      #form-search-opntop
+      / userinfo on top
+      #user-info-opntop
+      / CART ICON ON MMENU
+      #shopping-cart-box-ontop
+        %i.fa.fa-shopping-cart
+        .shopping-cart-box-ontop-content

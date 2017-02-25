@@ -33,6 +33,15 @@ gem 'paperclip', '~> 5.1'
 gem "sentry-raven"
 gem "therubyracer"
 
+# shop gems
+gem "font-awesome-rails"
+gem "select2-rails"
+gem 'owl_carousel-rails'
+gem 'bxslider-rails'
+gem 'jquery-ui-rails'
+gem "animate-rails"
+gem 'jquery-countdown-rails'
+
 group :assets do
   gem "sass-rails"
   gem "autoprefixer-rails"

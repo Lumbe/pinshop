@@ -1,0 +1,46 @@
+%footer#footer
+  .container
+    #introduce-box.row
+      .col-md-3
+        #address-box
+          #address-list
+            .footer-phone
+              = fa_icon('phone')
+              +38 (096) 88-69-888
+            .footer-email
+              = fa_icon('envelope')
+              pin-shop@mail.ua
+      .col-md-6
+        .row
+          .col-sm-6
+            .introduce-title Молодежная одежда
+            %ul#introduce-Account.introduce-list
+              %li
+                %a{:href => "#"} Мужчинам
+              %li
+                %a{:href => "#"} Женщинам
+              %li
+                %a{:href => "#"} Детям
+          .col-sm-6
+            .introduce-title
+            %ul#introduce-company.introduce-list
+              %li
+                %a{:href => "#"} Главная
+              %li
+                %a{:href => "#"} Доставка и оплата
+              %li
+                %a{:href => "#"} Оптовым покупателям
+              %li
+                %a{:href => "#"} Задать вопрос
+      .col-md-3
+        #contact-box
+          .introduce-title Узнай первым о новых поступлениях
+          #mail-box.input-group
+            %input{:placeholder => "Your Email Address", :type => "text"}/
+            %span.input-group-btn
+              %button.btn.btn-default{:type => "button"} OK
+          .social-link
+            %a{:href => "#"}
+              %i.fa.fa-facebook
+            %a{:href => "#"}
+              %i.fa.fa-vk

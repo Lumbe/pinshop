@@ -1,0 +1,261 @@
+.container
+  .row
+    .col-md-12
+      %h2.text-center.home-header Новинки
+  .row
+    .col-xs-12.col-sm-12.page-top-left
+      .popular-tabs
+        %ul.nav-tab.nav-tab-center
+          %li.active
+            %a{"data-toggle" => "tab", :href => "#new-collection-tab-1"} Мужчинам
+          %li
+            %a{"data-toggle" => "tab", :href => "#new-collection-tab-2"} Женщинам
+          %li
+            %a{"data-toggle" => "tab", :href => "#new-collection-tab-3"} Детям
+        .tab-container
+          #new-collection-tab-1.tab-panel.active
+            %ul.product-list.owl-carousel{"data-autoplayhoverpause" => "true", "data-autoplaytimeout" => "1000", "data-dots" => "false", "data-loop" => "true", "data-margin" => "30", "data-nav" => "true", "data-responsive" => "{\"0\":{\"items\":1},\"600\":{\"items\":3},\"1000\":{\"items\":4}}"}
+              %li
+                .left-block
+                  %a{:href => "#"}
+                    = image_tag('theme-images/bs2', alt: 'product', class: 'img-responsive')
+                  .group-price
+                    %span.product-new Новинка
+                    %span.product-sale Со скидкой
+                .right-block
+                  %h5.product-name
+                    %a{:href => "#"} Sexy Lady
+                  .content_price
+                    %span.price.old-price 210 грн.
+                    %span.price.product-price 179 грн.
+                  .btn.btn-cart
+                    = fa_icon('shopping-cart lg')
+                    В корзину
+              %li
+                .left-block
+                  %a{:href => "#"}
+                    = image_tag('theme-images/bs2', alt: 'product', class: 'img-responsive')
+                  .group-price
+                    %span.product-new Новинка
+                    %span.product-sale Со скидкой
+                .right-block
+                  %h5.product-name
+                    %a{:href => "#"} Футболка Reebok Crossfit
+                  .content_price
+                    %span.price.old-price 210 грн.
+                    %span.price.product-price 179 грн.
+                  .btn.btn-cart
+                    = fa_icon('shopping-cart lg')
+                    В корзину
+              %li
+                .left-block
+                  %a{:href => "#"}
+                    = image_tag('theme-images/bs2', alt: 'product', class: 'img-responsive')
+                  .group-price
+                    %span.product-new Новинка
+                    %span.product-sale Со скидкой
+                .right-block
+                  %h5.product-name
+                    %a{:href => "#"} Футболка Nike
+                  .content_price
+                    %span.price.old-price 210 грн.
+                    %span.price.product-price 179 грн.
+                  .btn.btn-cart
+                    = fa_icon('shopping-cart lg')
+                    В корзину
+              %li
+                .left-block
+                  %a{:href => "#"}
+                    = image_tag('theme-images/bs2', alt: 'product', class: 'img-responsive')
+                  .group-price
+                    %span.product-new Новинка
+                    %span.product-sale Со скидкой
+                .right-block
+                  %h5.product-name
+                    %a{:href => "#"} Футболка Puma Sport
+                  .content_price
+                    %span.price.old-price 210 грн.
+                    %span.price.product-price 179 грн.
+                  .btn.btn-cart
+                    = fa_icon('shopping-cart lg')
+                    В корзину
+              %li
+                .left-block
+                  %a{:href => "#"}
+                    = image_tag('theme-images/bs2', alt: 'product', class: 'img-responsive')
+                  .group-price
+                    %span.product-new Новинка
+                    %span.product-sale Со скидкой
+                .right-block
+                  %h5.product-name
+                    %a{:href => "#"} Футболка Winner
+                  .content_price
+                    %span.price.old-price 210 грн.
+                    %span.price.product-price 179 грн.
+                  .btn.btn-cart
+                    = fa_icon('shopping-cart lg')
+                    В корзину
+          #new-collection-tab-2.tab-panel
+            %ul.product-list.owl-carousel{"data-autoplayhoverpause" => "true", "data-autoplaytimeout" => "1000", "data-dots" => "false", "data-loop" => "true", "data-margin" => "30", "data-nav" => "true", "data-responsive" => "{\"0\":{\"items\":1},\"600\":{\"items\":3},\"1000\":{\"items\":4}}"}
+              %li
+                .left-block
+                  %a{:href => "#"}
+                    = image_tag('theme-images/bs2', alt: 'product', class: 'img-responsive')
+                  .group-price
+                    %span.product-new Новинка
+                    %span.product-sale Со скидкой
+                .right-block
+                  %h5.product-name
+                    %a{:href => "#"} Sexy Lady
+                  .content_price
+                    %span.price.old-price 210 грн.
+                    %span.price.product-price 179 грн.
+                  .btn.btn-cart
+                    = fa_icon('shopping-cart lg')
+                    В корзину
+              %li
+                .left-block
+                  %a{:href => "#"}
+                    = image_tag('theme-images/bs2', alt: 'product', class: 'img-responsive')
+                  .group-price
+                    %span.product-new Новинка
+                    %span.product-sale Со скидкой
+                .right-block
+                  %h5.product-name
+                    %a{:href => "#"} Футболка Reebok Crossfit
+                  .content_price
+                    %span.price.old-price 210 грн.
+                    %span.price.product-price 179 грн.
+                  .btn.btn-cart
+                    = fa_icon('shopping-cart lg')
+                    В корзину
+              %li
+                .left-block
+                  %a{:href => "#"}
+                    = image_tag('theme-images/bs2', alt: 'product', class: 'img-responsive')
+                  .group-price
+                    %span.product-new Новинка
+                    %span.product-sale Со скидкой
+                .right-block
+                  %h5.product-name
+                    %a{:href => "#"} Футболка Nike
+                  .content_price
+                    %span.price.old-price 210 грн.
+                    %span.price.product-price 179 грн.
+                  .btn.btn-cart
+                    = fa_icon('shopping-cart lg')
+                    В корзину
+              %li
+                .left-block
+                  %a{:href => "#"}
+                    = image_tag('theme-images/bs2', alt: 'product', class: 'img-responsive')
+                  .group-price
+                    %span.product-new Новинка
+                    %span.product-sale Со скидкой
+                .right-block
+                  %h5.product-name
+                    %a{:href => "#"} Футболка Puma Sport
+                  .content_price
+                    %span.price.old-price 210 грн.
+                    %span.price.product-price 179 грн.
+                  .btn.btn-cart
+                    = fa_icon('shopping-cart lg')
+                    В корзину
+              %li
+                .left-block
+                  %a{:href => "#"}
+                    = image_tag('theme-images/bs2', alt: 'product', class: 'img-responsive')
+                  .group-price
+                    %span.product-new Новинка
+                    %span.product-sale Со скидкой
+                .right-block
+                  %h5.product-name
+                    %a{:href => "#"} Футболка Winner
+                  .content_price
+                    %span.price.old-price 210 грн.
+                    %span.price.product-price 179 грн.
+                  .btn.btn-cart
+                    = fa_icon('shopping-cart lg')
+                    В корзину
+          #new-collection-tab-3.tab-panel
+            %ul.product-list.owl-carousel{"data-autoplayhoverpause" => "true", "data-autoplaytimeout" => "1000", "data-dots" => "false", "data-loop" => "true", "data-margin" => "30", "data-nav" => "true", "data-responsive" => "{\"0\":{\"items\":1},\"600\":{\"items\":3},\"1000\":{\"items\":4}}"}
+              %li
+                .left-block
+                  %a{:href => "#"}
+                    = image_tag('theme-images/bs2', alt: 'product', class: 'img-responsive')
+                  .group-price
+                    %span.product-new Новинка
+                    %span.product-sale Со скидкой
+                .right-block
+                  %h5.product-name
+                    %a{:href => "#"} Sexy Lady
+                  .content_price
+                    %span.price.old-price 210 грн.
+                    %span.price.product-price 179 грн.
+                  .btn.btn-cart
+                    = fa_icon('shopping-cart lg')
+                    В корзину
+              %li
+                .left-block
+                  %a{:href => "#"}
+                    = image_tag('theme-images/bs2', alt: 'product', class: 'img-responsive')
+                  .group-price
+                    %span.product-new Новинка
+                    %span.product-sale Со скидкой
+                .right-block
+                  %h5.product-name
+                    %a{:href => "#"} Футболка Reebok Crossfit
+                  .content_price
+                    %span.price.old-price 210 грн.
+                    %span.price.product-price 179 грн.
+                  .btn.btn-cart
+                    = fa_icon('shopping-cart lg')
+                    В корзину
+              %li
+                .left-block
+                  %a{:href => "#"}
+                    = image_tag('theme-images/bs2', alt: 'product', class: 'img-responsive')
+                  .group-price
+                    %span.product-new Новинка
+                    %span.product-sale Со скидкой
+                .right-block
+                  %h5.product-name
+                    %a{:href => "#"} Футболка Nike
+                  .content_price
+                    %span.price.old-price 210 грн.
+                    %span.price.product-price 179 грн.
+                  .btn.btn-cart
+                    = fa_icon('shopping-cart lg')
+                    В корзину
+              %li
+                .left-block
+                  %a{:href => "#"}
+                    = image_tag('theme-images/bs2', alt: 'product', class: 'img-responsive')
+                  .group-price
+                    %span.product-new Новинка
+                    %span.product-sale Со скидкой
+                .right-block
+                  %h5.product-name
+                    %a{:href => "#"} Футболка Puma Sport
+                  .content_price
+                    %span.price.old-price 210 грн.
+                    %span.price.product-price 179 грн.
+                  .btn.btn-cart
+                    = fa_icon('shopping-cart lg')
+                    В корзину
+              %li
+                .left-block
+                  %a{:href => "#"}
+                    = image_tag('theme-images/bs2', alt: 'product', class: 'img-responsive')
+                  .group-price
+                    %span.product-new Новинка
+                    %span.product-sale Со скидкой
+                .right-block
+                  %h5.product-name
+                    %a{:href => "#"} Футболка Winner
+                  .content_price
+                    %span.price.old-price 210 грн.
+                    %span.price.product-price 179 грн.
+                  .btn.btn-cart
+                    = fa_icon('shopping-cart lg')
+                    В корзину
