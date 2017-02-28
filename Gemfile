@@ -24,6 +24,7 @@ gem "kaminari-i18n"
 gem "kaminari"
 gem "hirb-unicode"
 gem "haml-rails"
+gem 'slim' # dependency for rendering views of 'ack_rails_admin_jcrop'
 gem "gmaps4rails"
 gem "devise"
 gem "ckeditor"
@@ -41,6 +42,8 @@ gem 'bxslider-rails'
 gem 'jquery-ui-rails'
 gem "animate-rails"
 gem 'jquery-countdown-rails'
+gem 'rails-i18n', '~> 5.0', '>= 5.0.1'
+gem 'ack_rails_admin_jcrop' #, git: 'git://github.com/ack43/rails_admin_jcrop.git'
 
 group :assets do
   gem "sass-rails"

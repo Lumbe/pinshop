@@ -22,6 +22,16 @@ RailsAdmin.config do |config|
   ## To disable Gravatar integration in Navigation Bar set to false
   # config.show_gravatar true
 
+  config.model Product do
+    configure :image, :jcrop
+
+    edit do
+      configure :image do
+        jcrop_options aspectRatio: 420.0/512.0
+      end
+    end
+  end
+
   config.actions do
     dashboard                     # mandatory
     index                         # mandatory
