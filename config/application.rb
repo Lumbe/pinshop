@@ -16,6 +16,10 @@ module Pinshop
     config.i18n.enforce_available_locales = true
     config.autoload_paths << Rails.root.join("app/support")
 
+    # set timizone
+    config.time_zone = 'Kyiv'
+    config.active_record.default_timezone = :local
+
     config.quiet_assets = true
 
     config.generators do |generate|
