@@ -9,49 +9,17 @@
               %i.fa.fa-bars
           .vertical-menu-content.is-home
             %ul.vertical-menu-list
-              %li
-                %a{:href => "#"}
-                  = image_tag('pin-icon', alt: 'Мужская одежда', class: 'icon-menu')
-                  Мужчинам
-              %ul.tree-menu.sub-menu
+              - @categories.each do |category|
                 %li
-                  %span
-                    %a{:href => "#"}
-                      Футболки, поло
-                %li
-                  %span
-                    %a{:href => "#"}
-                      Куртки, ветровки
-                %li
-                  %span
-                    %a{:href => "#"}
-                      Кофты, кардиганы
-                %li
-                  %span
-                    %a{:href => "#"}
-                      Спортивные костюмы
-                %li
-                  %span
-                    %a{:href => "#"}
-                      Штаны
-              %li
-                %a{:href => "#"}
-                  = image_tag('pin-icon', alt: 'Женская одежда', class: 'icon-menu')
-                  Женщинам
-              %ul.tree-menu.sub-menu
-                %li
-                  %span
-                    %a{:href => "#"}
-                      Кашемировые пальто
-              %li
-                %a{:href => "#"}
-                  = image_tag('pin-icon', alt: 'Женская одежда', class: 'icon-menu')
-                  Детям
-              %ul.tree-menu.sub-menu
-                %li
-                  %span
-                    %a{:href => "#"}
-                      Шапки, шарфы
+                  = link_to category do
+                    = image_tag('pin-icon', alt: 'pin-icon', class: 'icon-menu')
+                    = category.name
+                // - if main_category.subcategories.present?
+                //   - main_category.subcategories.each do |subcategory|
+                //     %ul.tree-menu.sub-menu
+                //       %li
+                //         %span
+                //           // = link_to subcategory.name, category_subcategory_path(subcategory.parent_category, subcategory)
       #main-menu.col-sm-9.main-menu
         %nav.navbar.navbar-default
           .container-fluid

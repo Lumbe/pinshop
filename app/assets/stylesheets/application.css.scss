@@ -23,6 +23,7 @@
  *= require reset
  *= require style
  *= require responsive
+ *= require categories
  *= require_self
  */
 
@@ -53,7 +54,7 @@ ul.sub-menu li {
     text-align:center;
 }
 
-.btn-cart {
+.btn-cart-orange {
   transition: all 0.25s;
   color: #fff;
   background-color: #FF6633;
@@ -62,16 +63,20 @@ ul.sub-menu li {
   margin-bottom: 10px;
 }
 
-.btn-cart:hover {
+.btn-cart-orange:hover {
   color: #FF6633;
   background-color: #fff;
   border: 1px solid #FF6633;
 
 }
 
-.btn-cart i {
+.btn-cart-orange i {
   vertical-align: top;
   margin-right: 4px;
+}
+
+.product-list li .right-block {
+  text-align: center;
 }
 
 #footer #address-list i {

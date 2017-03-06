@@ -1,0 +1,223 @@
+/ Left colunm
+#left_column.column.col-xs-12.col-sm-3
+  / block category
+  .block.left-module
+    %p.title_block Разделы
+    .block_content
+      / layered
+      .layered.layered-category
+        .layered-content
+          %ul.tree-menu
+            - @categories.each do |category|
+              %li
+                %span
+                = link_to category.name, category
+      / ./layered
+  / ./block category
+  / block filter
+  .block.left-module
+    %p.title_block Фильтр
+    .block_content
+      / layered
+      .layered.layered-filter-price
+        / filter categgory
+        .layered_subtitle Категории
+        .layered-content
+          %ul.check-box-list
+            - @categories.each do |category|
+              %li
+                = check_box_tag "#{category.name} - #{category.id}"
+                = label_tag "#{category.name} - #{category.id}" do
+                  %span.button
+                  = category.name
+                  %span.count
+                    (#{category.products.count})
+          / ./filter categgory
+        / filter price
+        .layered_subtitle Стоимость
+        .layered-content.slider-range
+          .slider-range-price{"data-label-reasult" => "",
+                              "data-max" => "#{number_with_precision(@category.max_product_price, precision: 0)}",
+                              "data-min" => "#{number_with_precision(@category.min_product_price, precision: 0)}",
+                              "data-unit" => "грн.",
+                              "data-value-max" => "#{number_with_precision(@category.max_product_price, precision: 0)}",
+                              "data-value-min" => "#{number_with_precision(@category.min_product_price, precision: 0)}"}
+          .amount-range-price
+            = number_to_currency(@category.min_product_price, precision: 0, locale: :uk)
+            \-
+            = number_to_currency(@category.max_product_price, precision: 0, locale: :uk)
+          %ul.check-box-list
+            %li
+              %input#p1{:name => "cc", :type => "checkbox"}/
+              %label{:for => "p1"}
+                %span.button
+                $20 - $50
+                %span.count (0)
+            %li
+              %input#p2{:name => "cc", :type => "checkbox"}/
+              %label{:for => "p2"}
+                %span.button
+                $50 - $100
+                %span.count (0)
+            %li
+              %input#p3{:name => "cc", :type => "checkbox"}/
+              %label{:for => "p3"}
+                %span.button
+                $100 - $250
+                %span.count (0)
+        / ./filter price
+        / filter color
+        .layered_subtitle Color
+        .layered-content.filter-color
+          %ul.check-box-list
+            %li
+              %input#color1{:name => "cc", :type => "checkbox"}/
+              %label{:for => "color1", :style => " background:#aab2bd;"}
+                %span.button
+            %li
+              %input#color2{:name => "cc", :type => "checkbox"}/
+              %label{:for => "color2", :style => " background:#cfc4a6;"}
+                %span.button
+            %li
+              %input#color3{:name => "cc", :type => "checkbox"}/
+              %label{:for => "color3", :style => " background:#aab2bd;"}
+                %span.button
+            %li
+              %input#color4{:name => "cc", :type => "checkbox"}/
+              %label{:for => "color4", :style => " background:#fccacd;"}
+                %span.button
+            %li
+              %input#color5{:name => "cc", :type => "checkbox"}/
+              %label{:for => "color5", :style => "background:#964b00;"}
+                %span.button
+            %li
+              %input#color6{:name => "cc", :type => "checkbox"}/
+              %label{:for => "color6", :style => " background:#faebd7;"}
+                %span.button
+            %li
+              %input#color7{:name => "cc", :type => "checkbox"}/
+              %label{:for => "color7", :style => " background:#e84c3d;"}
+                %span.button
+            %li
+              %input#color8{:name => "cc", :type => "checkbox"}/
+              %label{:for => "color8", :style => " background:#c19a6b;"}
+                %span.button
+            %li
+              %input#color9{:name => "cc", :type => "checkbox"}/
+              %label{:for => "color9", :style => " background:#f39c11;"}
+                %span.button
+            %li
+              %input#color10{:name => "cc", :type => "checkbox"}/
+              %label{:for => "color10", :style => " background:#5d9cec;"}
+                %span.button
+            %li
+              %input#color11{:name => "cc", :type => "checkbox"}/
+              %label{:for => "color11", :style => " background:#a0d468;"}
+                %span.button
+            %li
+              %input#color12{:name => "cc", :type => "checkbox"}/
+              %label{:for => "color12", :style => " background:#f1c40f;"}
+                %span.button
+        / ./filter color
+        / ./filter brand
+        .layered_subtitle brand
+        .layered-content.filter-brand
+          %ul.check-box-list
+            %li
+              %input#brand1{:name => "cc", :type => "checkbox"}/
+              %label{:for => "brand1"}
+                %span.button
+                Channelo
+                %span.count (0)
+            %li
+              %input#brand2{:name => "cc", :type => "checkbox"}/
+              %label{:for => "brand2"}
+                %span.button
+                Mamypokon
+                %span.count (0)
+            %li
+              %input#brand3{:name => "cc", :type => "checkbox"}/
+              %label{:for => "brand3"}
+                %span.button
+                Pamperson
+                %span.count (0)
+            %li
+              %input#brand4{:name => "cc", :type => "checkbox"}/
+              %label{:for => "brand4"}
+                %span.button
+                Pumano
+                %span.count (0)
+            %li
+              %input#brand5{:name => "cc", :type => "checkbox"}/
+              %label{:for => "brand5"}
+                %span.button
+                AME
+                %span.count (0)
+        / ./filter brand
+        / ./filter size
+        .layered_subtitle Size
+        .layered-content.filter-size
+          %ul.check-box-list
+            %li
+              %input#size1{:name => "cc", :type => "checkbox"}/
+              %label{:for => "size1"}
+                %span.button>
+                X
+            %li
+              %input#size2{:name => "cc", :type => "checkbox"}/
+              %label{:for => "size2"}
+                %span.button>
+                XXL
+            %li
+              %input#size3{:name => "cc", :type => "checkbox"}/
+              %label{:for => "size3"}
+                %span.button>
+                XL
+            %li
+              %input#size4{:name => "cc", :type => "checkbox"}/
+              %label{:for => "size4"}
+                %span.button>
+                XXL
+            %li
+              %input#size5{:name => "cc", :type => "checkbox"}/
+              %label{:for => "size5"}
+                %span.button>
+                M
+            %li
+              %input#size6{:name => "cc", :type => "checkbox"}/
+              %label{:for => "size6"}
+                %span.button>
+                XXS
+            %li
+              %input#size7{:name => "cc", :type => "checkbox"}/
+              %label{:for => "size7"}
+                %span.button>
+                S
+            %li
+              %input#size8{:name => "cc", :type => "checkbox"}/
+              %label{:for => "size8"}
+                %span.button>
+                XS
+            %li
+              %input#size9{:name => "cc", :type => "checkbox"}/
+              %label{:for => "size9"}
+                %span.button>
+                34
+            %li
+              %input#size10{:name => "cc", :type => "checkbox"}/
+              %label{:for => "size10"}
+                %span.button>
+                36
+            %li
+              %input#size11{:name => "cc", :type => "checkbox"}/
+              %label{:for => "size11"}
+                %span.button>
+                35
+            %li
+              %input#size12{:name => "cc", :type => "checkbox"}/
+              %label{:for => "size12"}
+                %span.button>
+                37
+        / ./filter size
+      / ./layered
+  / ./block filter

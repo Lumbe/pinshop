@@ -18,9 +18,14 @@
 #
 
 class Category < ApplicationRecord
-  has_many :subcategories, class_name: "Category",
-                          foreign_key: 'parent_category_id',
-                          dependent: :destroy
-  belongs_to :parent_category, class_name: "Category"
   has_many :products
+
+  def min_product_price
+    products.map(&:price).min
+  end
+
+  def max_product_price
+    products.map(&:price).max
+  end
+
 end

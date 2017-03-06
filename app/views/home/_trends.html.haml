@@ -18,16 +18,16 @@
               - @products.each do |product|
                 %li
                   .left-block
-                    %a{:href => "#"}
+                    = link_to category_product_path(product.category, product) do
                       = image_tag(product.image.url(:index), alt: 'product', class: 'img-responsive')
                     .group-price
                       - if product.novelty?
                         %span.product-new Новинка
                       - if product.old_price.present?
                         %span.product-sale Скидка
-                  .right-block
+                  .right-block.text-center
                     %h5.product-name
-                      %a{:href => "#"}
+                      = link_to category_product_path(product.category, product) do
                         = product.name
                     .content_price
                       - if product.old_price.present?
@@ -35,7 +35,7 @@
                       %span.price.product-price
                         = number_to_currency(product.price, locale: :uk, precision: 0)
                     %br
-                    .btn.btn-cart
+                    .btn.btn-cart-orange
                       = fa_icon('shopping-cart lg')
                       В корзину
           #tab-2.tab-panel
