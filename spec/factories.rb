@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 FactoryGirl.define do
+  factory :product_image do
+    
+  end
   factory :product do
     name "MyString"
     price "9.99"

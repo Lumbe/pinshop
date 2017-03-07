@@ -23,6 +23,8 @@ class Product < ApplicationRecord
   end
 
   belongs_to :category
+  has_many :image_variants, dependent: :destroy
+
   has_attached_file :image, styles: { large: "850x1036>", product: "420x512>", index: "300x366>", thumb: "100x122>" }, default_url: "/images/:style/missing.png"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
@@ -30,7 +32,12 @@ class Product < ApplicationRecord
             presence: true
   validates :old_price, numericality: { greater_than: :price, allow_blank: true }
 
+  def create_associated_image(image)
+    image_variants.create(image: image)
+  end
+
   def novelty?
     !self.novelty_expires_at.blank? && (self.novelty_expires_at > Time.current) ? true : false
   end
+
 end
