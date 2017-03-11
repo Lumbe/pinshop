@@ -24,8 +24,18 @@
  *= require style
  *= require responsive
  *= require categories
+ *= require fancybox
+ *= require product
  *= require_self
  */
+
+.product-list li .old-price {
+  display: inline-block;
+}
+
+.product-list li .product-price {
+  display: inline-block;
+}
 
 .top-header-icons {
     padding: 10px 4px;

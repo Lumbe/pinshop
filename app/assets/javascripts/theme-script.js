@@ -23,8 +23,8 @@
             $('#product-zoom').elevateZoom({
                 zoomType: "inner",
                 cursor: "crosshair",
-                zoomWindowFadeIn: 500,
-                zoomWindowFadeOut: 750,
+                zoomWindowFadeIn: 250,
+                zoomWindowFadeOut: 250,
                 gallery:'gallery_01'
             });
         }

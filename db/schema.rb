@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170307152116) do
+ActiveRecord::Schema.define(version: 20170310144638) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,18 +62,24 @@ ActiveRecord::Schema.define(version: 20170307152116) do
   end
 
   create_table "products", force: :cascade do |t|
-    t.string   "name",                                       default: ""
-    t.decimal  "price",              precision: 8, scale: 2
-    t.text     "description",                                default: ""
-    t.datetime "created_at",                                              null: false
-    t.datetime "updated_at",                                              null: false
+    t.string   "name",                                            default: ""
+    t.decimal  "price",                   precision: 8, scale: 2
+    t.text     "description",                                     default: ""
+    t.datetime "created_at",                                                     null: false
+    t.datetime "updated_at",                                                     null: false
     t.integer  "category_id"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.date     "novelty_expires_at"
-    t.decimal  "old_price",          precision: 8, scale: 2
+    t.decimal  "old_price",               precision: 8, scale: 2
+    t.boolean  "in_stock",                                        default: true
+    t.string   "size_chart_file_name"
+    t.string   "size_chart_content_type"
+    t.integer  "size_chart_file_size"
+    t.datetime "size_chart_updated_at"
+    t.text     "sizes",                                           default: ""
   end
 
   create_table "users", force: :cascade do |t|

@@ -36,9 +36,14 @@ RailsAdmin.config do |config|
     configure :image, :jcrop
 
     edit do
+      configure :description, :ck_editor
       configure :image do
         jcrop_options aspectRatio: 420.0/512.0
       end
+      configure :sizes do
+        partial 'select_sizes'
+      end
+      exclude_fields :image_variants
     end
   end
 

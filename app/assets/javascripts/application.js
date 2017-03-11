@@ -21,6 +21,8 @@
 //= require owl.carousel
 //= require jquery.countdown
 //= require jquery.countdown-es
+//= require jquery.elevatezoom
 //= require jquery-ui
+//= require fancybox
 //= require_tree ../../../vendor/assets/javascripts/.
 //= require_tree .

@@ -134,6 +134,7 @@ GEM
       railties (>= 3.2, < 5.1)
     dropzonejs-rails (0.7.3)
       rails (> 3.1)
+    elevatezoom-rails (1.0.0)
     em-websocket (0.5.1)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.6.0)
@@ -148,6 +149,8 @@ GEM
       railties (>= 3.0.0)
     faker (1.7.3)
       i18n (~> 0.5)
+    fancybox-rails (0.3.1)
+      railties (>= 3.1.0)
     faraday (0.11.0)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.17)
@@ -564,8 +567,10 @@ DEPENDENCIES
   devise
   devise-bootstrap-views
   dotenv-rails
+  elevatezoom-rails
   factory_girl_rails
   faker
+  fancybox-rails
   font-awesome-rails
   formulaic
   fuubar

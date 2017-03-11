@@ -45,6 +45,8 @@ gem 'jquery-countdown-rails'
 gem 'rails-i18n', '~> 5.0', '>= 5.0.1'
 gem 'ack_rails_admin_jcrop' #, git: 'git://github.com/ack43/rails_admin_jcrop.git'
 gem 'rails_admin_dropzone'
+gem 'elevatezoom-rails'
+gem 'fancybox-rails'
 
 group :assets do
   gem "sass-rails"

@@ -1,237 +1,37 @@
 #left_column.column.col-xs-12.col-sm-3
   / block category
   .block.left-module
-    %p.title_block CATEGORIES
+    %p.title_block.text-uppercase Разделы
     .block_content
       / layered
       .layered.layered-category
         .layered-content
           %ul.tree-menu
-            %li.active
-              %span
-              %a{:href => "#"} Tops
-              %ul
-                %li
-                  %span
-                  %a{:href => "#"} T-shirts
-                %li
-                  %span
-                  %a{:href => "#"} Dresses
-                %li
-                  %span
-                  %a{:href => "#"} Casual
-                %li
-                  %span
-                  %a{:href => "#"} Evening
-                %li
-                  %span
-                  %a{:href => "#"} Summer
-                %li
-                  %span
-                  %a{:href => "#"} Bags  Shoes
-                %li
-                  %span
-                  %a{:href => "#"}
-                    %span>
-                    Blouses
-            %li
-              %span
-              %a{:href => "#"} T-shirts
-            %li
-              %span
-              %a{:href => "#"} Dresses
-            %li
-              %span
-              %a{:href => "#"} Jackets and coats
-            %li
-              %span
-              %a{:href => "#"} Knitted
-            %li
-              %span
-              %a{:href => "#"} Pants
-            %li
-              %span
-              %a{:href => "#"} Bags  Shoes
-            %li
-              %span
-              %a{:href => "#"} Best selling
+            - @categories.each do |category|
+              %li
+                %span
+                = link_to category.name, category
       / ./layered
   / ./block category
   / block best sellers
   .block.left-module
-    %p.title_block BEST SELLERS
-    .block_content
-      .owl-carousel.owl-best-sell{"data-autoplay" => "true", "data-autoplayHoverPause" => "true", "data-autoplayTimeout" => "1000", "data-items" => "1", "data-loop" => "true", "data-margin" => "0", "data-nav" => "false"}
-        %ul.products-block.best-sell
+    %p.title_block Распродажа
+    .block_content.product-onsale
+      %ul.product-list.owl-carousel{"data-autoplay" => "true", "data-autoplayHoverPause" => "true", "data-autoplayTimeout" => "1000", "data-items" => "1", "data-loop" => "true", "data-margin" => "0", "data-nav" => "false"}
+        - @product.on_sale.each do |product|
           %li
-            .products-block-left
-              %a{:href => "#"}
-                %img{:alt => "SPECIAL PRODUCTS", :src => "assets/data/product-100x122.jpg"}
-              .products-block-right
-                %p.product-name
-                  %a{:href => "#"} Woman Within Plus Size Flared
-                %p.product-price $38,95
-                %p.product-star
-                  %i.fa.fa-star
-                  %i.fa.fa-star
-                  %i.fa.fa-star
-                  %i.fa.fa-star
-                  %i.fa.fa-star-half-o
-            %li
-              .products-block-left
-                %a{:href => "#"}
-                  %img{:alt => "SPECIAL PRODUCTS", :src => "assets/data/p11.jpg"}
-                .products-block-right
-                  %p.product-name
-                    %a{:href => "#"} Woman Within Plus Size Flared
-                  %p.product-price $38,95
-                  %p.product-star
-                    %i.fa.fa-star
-                    %i.fa.fa-star
-                    %i.fa.fa-star
-                    %i.fa.fa-star
-                    %i.fa.fa-star-half-o
-              %li
-                .products-block-left
-                  %a{:href => "#"}
-                    %img{:alt => "SPECIAL PRODUCTS", :src => "assets/data/p12.jpg"}
-                  .products-block-right
-                    %p.product-name
-                      %a{:href => "#"} Plus Size Rock Star Skirt
-                    %p.product-price $38,95
-                    %p.product-star
-                      %i.fa.fa-star
-                      %i.fa.fa-star
-                      %i.fa.fa-star
-                      %i.fa.fa-star
-                      %i.fa.fa-star-half-o
-              %ul.products-block.best-sell
-                %li
-                  .products-block-left
-                    %a{:href => "#"}
-                      %img{:alt => "SPECIAL PRODUCTS", :src => "assets/data/p13.jpg"}
-                    .products-block-right
-                      %p.product-name
-                        %a{:href => "#"} Woman Within Plus Size Flared
-                      %p.product-price $38,95
-                      %p.product-star
-                        %i.fa.fa-star
-                        %i.fa.fa-star
-                        %i.fa.fa-star
-                        %i.fa.fa-star
-                        %i.fa.fa-star-half-o
-                  %li
-                    .products-block-left
-                      %a{:href => "#"}
-                        %img{:alt => "SPECIAL PRODUCTS", :src => "assets/data/p14.jpg"}
-                      .products-block-right
-                        %p.product-name
-                          %a{:href => "#"} Woman Within Plus Size Flared
-                        %p.product-price $38,95
-                        %p.product-star
-                          %i.fa.fa-star
-                          %i.fa.fa-star
-                          %i.fa.fa-star
-                          %i.fa.fa-star
-                          %i.fa.fa-star-half-o
-                    %li
-                      .products-block-left
-                        %a{:href => "#"}
-                          %img{:alt => "SPECIAL PRODUCTS", :src => "assets/data/p15.jpg"}
-                        .products-block-right
-                          %p.product-name
-                            %a{:href => "#"} Plus Size Rock Star Skirt
-                          %p.product-price $38,95
-                          %p.product-star
-                            %i.fa.fa-star
-                            %i.fa.fa-star
-                            %i.fa.fa-star
-                            %i.fa.fa-star
-                            %i.fa.fa-star-half-o
-              / ./block best sellers
-              / left silide
-              .col-left-slide.left-module
-                %ul.owl-carousel.owl-style2{"data-autoplay" => "true", "data-autoplayHoverPause" => "true", "data-autoplayTimeout" => "1000", "data-items" => "1", "data-loop" => "true", "data-margin" => "0", "data-nav" => "false"}
-                  %li
-                    %a{:href => "#"}
-                      %img{:alt => "slide-left", :src => "assets/data/slide-left.jpg"}/
-                    %li
-                      %a{:href => "#"}
-                        %img{:alt => "slide-left", :src => "assets/data/slide-left2.jpg"}/
-                      %li
-                        %a{:href => "#"}
-                          %img{:alt => "slide-left", :src => "assets/data/slide-left3.png"}/
-                    / ./left silde
-                    / block best sellers
-                    .block.left-module
-                      %p.title_block ON SALE
-                      .block_content.product-onsale
-                        %ul.product-list.owl-carousel{"data-autoplay" => "true", "data-autoplayHoverPause" => "true", "data-autoplayTimeout" => "1000", "data-items" => "1", "data-loop" => "true", "data-margin" => "0", "data-nav" => "false"}
-                          %li
-                            .product-container
-                              .left-block
-                                %a{:href => "#"}
-                                  %img.img-responsive{:alt => "product", :src => "assets/data/product-260x317.jpg"}/
-                                .price-percent-reduction2 -30% OFF
-                              .right-block
-                                %h5.product-name
-                                  %a{:href => "#"} Maecenas consequat mauris
-                                .product-star
-                                  %i.fa.fa-star
-                                  %i.fa.fa-star
-                                  %i.fa.fa-star
-                                  %i.fa.fa-star
-                                  %i.fa.fa-star-half-o
-                                .content_price
-                                  %span.price.product-price $38,95
-                                  %span.price.old-price $52,00
-                              .product-bottom
-                                %a.btn-add-cart{:href => "#add", :title => "Add to Cart"} Add to Cart
-                          %li
-                            .product-container
-                              .left-block
-                                %a{:href => "#"}
-                                  %img.img-responsive{:alt => "product", :src => "assets/data/p35.jpg"}/
-                                .price-percent-reduction2 -10% OFF
-                              .right-block
-                                %h5.product-name
-                                  %a{:href => "#"} Maecenas consequat mauris
-                                .product-star
-                                  %i.fa.fa-star
-                                  %i.fa.fa-star
-                                  %i.fa.fa-star
-                                  %i.fa.fa-star
-                                  %i.fa.fa-star-half-o
-                                .content_price
-                                  %span.price.product-price $38,95
-                                  %span.price.old-price $52,00
-                              .product-bottom
-                                %a.btn-add-cart{:href => "#add", :title => "Add to Cart"} Add to Cart
-                          %li
-                            .product-container
-                              .left-block
-                                %a{:href => "#"}
-                                  %img.img-responsive{:alt => "product", :src => "assets/data/p37.jpg"}/
-                                .price-percent-reduction2 -42% OFF
-                              .right-block
-                                %h5.product-name
-                                  %a{:href => "#"} Maecenas consequat mauris
-                                .product-star
-                                  %i.fa.fa-star
-                                  %i.fa.fa-star
-                                  %i.fa.fa-star
-                                  %i.fa.fa-star
-                                  %i.fa.fa-star-half-o
-                                .content_price
-                                  %span.price.product-price $38,95
-                                  %span.price.old-price $52,00
-                              .product-bottom
-                                %a.btn-add-cart{:href => "#add", :title => "Add to Cart"} Add to Cart
-                    / ./block best sellers
-                    / left silide
-                    .col-left-slide.left-module
-                      .banner-opacity
-                        %a{:href => "#"}
-                          %img{:alt => "ads-banner", :src => "assets/data/ads-banner.jpg"}/
-                      / ./left silde
-                    / ./left colunm
+            .product-container
+              .left-block
+                = link_to category_product_path(product.category, product) do
+                  = image_tag product.image.url(:index), alt: "#{product.name}", class: 'img-responsive'
+                .price-percent-reduction2 -#{percent_discount(product)}
+              .right-block.text-center
+                %h5.product-name
+                  = link_to product.name, category_product_path(product.category, product)
+                .content_price
+                  %span.price.old-price= number_to_currency(product.old_price, locale: :uk, precision: 0)
+                  %span.price.product-price= number_to_currency(product.price, locale: :uk, precision: 0)
+                %br
+                .btn.btn-cart-orange
+                  = fa_icon('shopping-cart lg')
+                  В корзину

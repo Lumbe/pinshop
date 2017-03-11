@@ -1,0 +1,136 @@
+/* Sidebar discount */
+.product-list li .price-percent-reduction2 {
+  line-height: 32px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* Product price group */
+#product .pb-right-column .item-code {
+  color: #999;
+}
+
+#product .pb-right-column .product-price-group {
+  padding: 15px 0;
+}
+
+#product .pb-right-column .product-price-group .price {
+  font-size: 36px;
+}
+
+#product .pb-right-column .product-price-group .old-price {
+  font-size: 16px;
+}
+
+#product .pb-right-column .product-price-group .discount {
+  margin-top: 3px;
+}
+
+#product .pb-right-column .not-in-stock {
+  color: #666;
+  font-weight: bold;
+  margin-left: 10px;
+  font-size: 16px;
+}
+
+/* Discount*/
+
+#product .pb-right-column .discount-container {
+  display: inline-block;
+  line-height: 0.9;
+  font-size: 14px;
+  margin-top: -3px;
+}
+
+/* Size chart*/
+
+#product .pb-right-column .form-option .attributes.size-chart {
+  line-height: 40px;
+  padding: 10px 0;
+}
+
+#product .pb-right-column .form-option .attributes .attribute-label {
+  margin-right: 10px;
+}
+
+#product .pb-right-column .form-option .attributes select {
+  height: 42px;
+  padding: 0 0 0 15px;
+  min-width: 70px;
+  font-size: 16px;
+}
+
+/* Qty */
+
+#product .pb-right-column .form-action .qty-container {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+#product .pb-right-column .form-action .qty{
+  width: 40px;
+  display: inline-block;
+  float: left;
+  overflow: hidden;
+
+}
+#product .pb-right-column .form-action .product-qty{
+  border: 1px solid #eaeaea;
+  width: 60px;
+  overflow: hidden;
+  background: #FAFAFA;
+
+}
+#product .pb-right-column .form-action .attributes .btn-plus{
+  width: 18px;
+  height: 42px;
+  display: inline-block;
+  font-size: 18px;
+
+}
+#product .pb-right-column .form-action .btn-plus a{
+  display: block;
+  width: 18px;
+  height: 21px;
+  text-align: center;
+  cursor: inherit;
+}
+
+#product .pb-right-column .form-action a.btn-plus-up {
+  padding-top: 4px;
+}
+
+#product .pb-right-column .form-action a.btn-plus-down {
+  margin-top: -3px;
+  height: 21px;
+}
+
+#product .pb-right-column .fa {
+  line-height: 1.3;
+}
+
+#product .pb-right-column .form-action .attributes input{
+  max-width: 50px;
+  padding: 0 5px;
+}
+
+#product .pb-right-column .btn-cart-orange {
+  line-height: 30px;
+}
+
+#product .pb-right-column .form-action .attributes input {
+  font-size: 18px;
+  padding: 6px 17px;
+}
+
+/* Related products */
+
+.product-list li .product-name {
+  font-size: 16px;
+  font-weight: 600;
+  min-height: 40px;
+}
+
+.product-list li .content_price {
+  margin: 5px 0 10px;
+}

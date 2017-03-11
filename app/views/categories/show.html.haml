@@ -48,7 +48,7 @@
                         Availability:
                         %span In stock
                       .product-desc
-                        = product.description
+                        = truncate(product.description, length: 180, separator: ' ', escape: false)
                     %br
                     .btn.btn-cart-orange
                       = fa_icon('shopping-cart lg')

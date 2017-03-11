@@ -28,376 +28,77 @@
                               id: 'product-zoom',
                               data: {"zoom-image" => "#{@product.image.url(:large)}"}
                 #gallery_01.product-img-thumb
-                  %ul.owl-carousel{"data-dots" => "false", "data-items" => "3", "data-loop" => "true", "data-margin" => "20", "data-nav" => "true"}
+                  %ul.owl-carousel{"data-dots" => "false", "data-items" => "3", "data-margin" => "20", "data-nav" => "true"}
                     %li
-                      %a{"data-image" => "assets/data/product-s3-420x512.jpg", "data-zoom-image" => "assets/data/product-s3-850x1036.jpg", :href => "#"}
-                        %img#product-zoom{:src => "assets/data/product-s3-100x122.jpg"}/
-                    %li
-                      %a{"data-image" => "assets/data/product-s2-420x512.jpg", "data-zoom-image" => "assets/data/product-s2-850x1036.jpg", :href => "#"}
-                        %img#product-zoom{:src => "assets/data/product-s2-100x122.jpg"}/
-                    %li
-                      %a{"data-image" => "assets/data/product-420x512.jpg", "data-zoom-image" => "assets/data/product-850x1036.jpg", :href => "#"}
-                        %img#product-zoom{:src => "assets/data/product-100x122.jpg"}/
-                    %li
-                      %a{"data-image" => "assets/data/product-s4-420x512.jpg", "data-zoom-image" => "assets/data/product-s4-850x1036.jpg", :href => "#"}
-                        %img#product-zoom{:src => "assets/data/product-s4-100x122.jpg"}/
-                    %li
-                      %a{"data-image" => "assets/data/product-s5-420x512.jpg", "data-zoom-image" => "assets/data/product-s5-850x1036.jpg", :href => "#"}
-                        %img#product-zoom{:src => "assets/data/product-s5-100x122.jpg"}/
-                    %li
-                      %a{"data-image" => "assets/data/product-s6-420x512.jpg", "data-zoom-image" => "assets/data/product-s6-850x1036.jpg", :href => "#"}
-                        %img#product-zoom{:src => "assets/data/product-s6-100x122.jpg"}/
-              / product-imge
+                      = link_to '#', data: {'image' => @product.image.url(:product), 'zoom-image' => @product.image.url(:large)} do
+                        = image_tag @product.image.url(:thumb), id: 'product-zoom'
+                    - @product.image_variants.each do |image_variant|
+                      %li
+                        = link_to '#', data: {'image' => image_variant.image.url(:product), 'zoom-image' => image_variant.image.url(:large)} do
+                          = image_tag image_variant.image.url(:thumb),
+                                      alt: "#{@product.name}",
+                                      id: 'product-zoom',
+                                      data: {"zoom-image" => "#{image_variant.image.url(:large)}"}
+                / product-imge
             .pb-right-column.col-xs-12.col-sm-6
-              %h1.product-name Maecenas consequat mauris
-              .product-comments
-                .product-star
-                  %i.fa.fa-star
-                  %i.fa.fa-star
-                  %i.fa.fa-star
-                  %i.fa.fa-star
-                  %i.fa.fa-star-half-o
-                .comments-advices
-                  %a{:href => "#"} Based  on 3 ratings
-                  %a{:href => "#"}
-                    %i.fa.fa-pencil
-                    write a review
-              .product-price-group
-                %span.price $38.95
-                %span.old-price $52.00
-                %span.discount -30%
+              %h1.product-name= @product.name
               .info-orther
-                %p Item Code: #453217907
-                %p
-                  Availability:
-                  %span.in-stock In stock
-                %p Condition: New
-              .product-desc
-                Vestibulum eu odio. Suspendisse potenti. Morbi mollis tellus ac sapien. Praesent egestas tristique nibh. Nullam dictum felis eu pede mollis pretium.Fusce egestas elit eget lorem.
+                %span.text-muted Код товара: #453217907
+                - if !@product.in_stock
+                  %span.not-in-stock Нет в наличии
+              .product-price-group
+                %span.price= number_to_currency(@product.price, precision: 0, locale: :uk)
+                - if @product.old_price.present?
+                  .discount-container
+                    %span.old-price.text-muted= number_to_currency(@product.old_price, precision: 0, locale: :uk)
+                    %br
+                    %span.discount= discount(@product.old_price, @product.price)
               .form-option
-                %p.form-option-title Available Options:
-                .attributes
-                  .attribute-label Color:
+                .attributes.size-chart
+                  .attribute-label Размер:
                   .attribute-list
-                    %ul.list-color
-                      %li{:style => "background:#0c3b90;"}
-                        %a{:href => "#"} red
-                      %li.active{:style => "background:#036c5d;"}
-                        %a{:href => "#"} red
-                      %li{:style => "background:#5f2363;"}
-                        %a{:href => "#"} red
-                      %li{:style => "background:#ffc000;"}
-                        %a{:href => "#"} red
-                      %li{:style => "background:#36a93c;"}
-                        %a{:href => "#"} red
-                      %li{:style => "background:#ff0000;"}
-                        %a{:href => "#"} red
-                .attributes
-                  .attribute-label Qty:
-                  .attribute-list.product-qty
-                    .qty
-                      %input#option-product-qty{:type => "text", :value => "1"}/
-                    .btn-plus
-                      %a.btn-plus-up{:href => "#"}
-                        %i.fa.fa-caret-up
-                      %a.btn-plus-down{:href => "#"}
-                        %i.fa.fa-caret-down
-                .attributes
-                  .attribute-label Size:
-                  .attribute-list
-                    %select
-                      %option{:value => "1"} X
-                      %option{:value => "2"} XL
-                      %option{:value => "3"} XXL
-                    %a#size_chart.fancybox{:href => "assets/data/size-chart.jpg"} Size Chart
+                    = select :product, :sizes, options_for_select(@product.sizes, @product.sizes.first)
+                    - if @product.size_chart.present?
+                      = link_to 'Как подобрать размер?', @product.size_chart.url, id: 'size_chart', class: 'fancybox'
               .form-action
                 .button-group
-                  %a.btn-add-cart{:href => "#"} Add to cart
-                .button-group
-                  %a.wishlist{:href => "#"}
-                    %i.fa.fa-heart-o
-                    = succeed "Wishlist" do
-                      %br/
-                  %a.compare{:href => "#"}
-                    %i.fa.fa-signal
-                    %br/
-                    Compare
-              .form-share
-                .sendtofriend-print
-                  %a{:href => "javascript:print();"}
-                    %i.fa.fa-print
-                    Print
-                  %a{:href => "#"}
-                    %i.fa.fa-envelope-o.fa-fw>
-                    Send to a friend
-                .network-share
-          / tab product
-          .product-tab
-            %ul.nav-tab
-              %li.active
-                %a{"aria-expanded" => "false", "data-toggle" => "tab", :href => "#product-detail"} Product Details
-              %li
-                %a{"aria-expanded" => "true", "data-toggle" => "tab", :href => "#information"} information
-              %li
-                %a{"data-toggle" => "tab", :href => "#reviews"} reviews
-              %li
-                %a{"data-toggle" => "tab", :href => "#extra-tabs"} Extra Tabs
-              %li
-                %a{"data-toggle" => "tab", :href => "#guarantees"} guarantees
-            .tab-container
-              #product-detail.tab-panel.active
-                %p Morbi mollis tellus ac sapien. Nunc nec neque. Praesent nec nisl a purus blandit viverra. Nunc nec neque. Pellentesque auctor neque nec urna.
-                %p Curabitur suscipit suscipit tellus. Cras id dui. Nam ipsum risus, rutrum vitae, vestibulum eu, molestie vel, lacus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Maecenas vestibulum mollis diam.
-                %p Vestibulum facilisis, purus nec pulvinar iaculis, ligula mi congue nunc, vitae euismod ligula urna in dolor. Sed lectus. Phasellus leo dolor, tempus non, auctor et, hendrerit quis, nisi. Nam at tortor in tellus interdum sagittis. Pellentesque egestas, neque sit amet convallis pulvinar, justo nulla eleifend augue, ac auctor orci leo non est.
-              #information.tab-panel
-                %table.table.table-bordered
-                  %tr
-                    %td{:width => "200"} Compositions
-                    %td Cotton
-                  %tr
-                    %td Styles
-                    %td Girly
-                  %tr
-                    %td Properties
-                    %td Colorful Dress
-              #reviews.tab-panel
-                .product-comments-block-tab
-                  .comment.row
-                    .col-sm-3.author
-                      .grade
-                        %span Grade
-                        %span.reviewRating
-                          %i.fa.fa-star
-                          %i.fa.fa-star
-                          %i.fa.fa-star
-                          %i.fa.fa-star
-                          %i.fa.fa-star
-                      .info-author
-                        %span
-                          %strong Jame
-                        %em 04/08/2015
-                    .col-sm-9.commnet-dettail
-                      Phasellus accumsan cursus velit. Pellentesque egestas, neque sit amet convallis pulvinar
-                  .comment.row
-                    .col-sm-3.author
-                      .grade
-                        %span Grade
-                        %span.reviewRating
-                          %i.fa.fa-star
-                          %i.fa.fa-star
-                          %i.fa.fa-star
-                          %i.fa.fa-star
-                          %i.fa.fa-star
-                      .info-author
-                        %span
-                          %strong Author
-                        %em 04/08/2015
-                    .col-sm-9.commnet-dettail
-                      Phasellus accumsan cursus velit. Pellentesque egestas, neque sit amet convallis pulvinar
-                  %p
-                    %a.btn-comment{:href => "#"} Write your review !
-              #extra-tabs.tab-panel
-                %p Phasellus accumsan cursus velit. Pellentesque egestas, neque sit amet convallis pulvinar, justo nulla eleifend augue, ac auctor orci leo non est. Sed lectus. Sed a libero. Vestibulum eu odio.
-                %p Maecenas vestibulum mollis diam. In consectetuer turpis ut velit. Curabitur at lacus ac velit ornare lobortis. Praesent ac sem eget est egestas volutpat. Nam eget dui.
-                %p Maecenas nec odio et ante tincidunt tempus. Vestibulum suscipit nulla quis orci. Aenean tellus metus, bibendum sed, posuere ac, mattis non, nunc. Aenean ut eros et nisl sagittis vestibulum. Aliquam eu nunc.
-              #guarantees.tab-panel
-                %p Phasellus accumsan cursus velit. Pellentesque egestas, neque sit amet convallis pulvinar, justo nulla eleifend augue, ac auctor orci leo non est. Sed lectus. Sed a libero. Vestibulum eu odio.
-                %p Maecenas vestibulum mollis diam. In consectetuer turpis ut velit. Curabitur at lacus ac velit ornare lobortis. Praesent ac sem eget est egestas volutpat. Nam eget dui.
-                %p Maecenas nec odio et ante tincidunt tempus. Vestibulum suscipit nulla quis orci. Aenean tellus metus, bibendum sed, posuere ac, mattis non, nunc. Aenean ut eros et nisl sagittis vestibulum. Aliquam eu nunc.
-                %p Maecenas vestibulum mollis diam. In consectetuer turpis ut velit. Curabitur at lacus ac velit ornare lobortis. Praesent ac sem eget est egestas volutpat. Nam eget dui.
-          / ./tab product
-          / box product
+                  .attributes.qty-container
+                    .attribute-list.product-qty
+                      .qty
+                        %input#option-product-qty{:type => "text", :value => "1"}/
+                      .btn-plus
+                        %a.btn-plus-up{:href => "#"}
+                          %i.fa.fa-caret-up
+                        %a.btn-plus-down{:href => "#"}
+                          %i.fa.fa-caret-down
+                  .btn.btn-cart-orange
+                    = fa_icon('shopping-cart lg')
+                    В корзину
+              - if @product.description.present?
+                .form-option
+                  = sanitize(@product.description)
           .page-product-box
-            %h3.heading Related Products
-            %ul.product-list.owl-carousel{"data-autoplayhoverpause" => "true", "data-autoplaytimeout" => "1000", "data-dots" => "false", "data-loop" => "true", "data-margin" => "30", "data-nav" => "true", "data-responsive" => "{\"0\":{\"items\":1},\"600\":{\"items\":3},\"1000\":{\"items\":3}}"}
-              %li
-                .product-container
+            %h3.heading Вам так же может понравиться
+            %ul.product-list.owl-carousel{"data-autoplayhoverpause" => "true", "data-autoplaytimeout" => "1000", "data-dots" => "false", "data-loop" => "true", "data-margin" => "30", "data-nav" => "true", "data-responsive" => "{\"0\":{\"items\":1},\"600\":{\"items\":3},\"1000\":{\"items\":4}}"}
+              - @product.related_products.each do |product|
+                %li
                   .left-block
-                    %a{:href => "#"}
-                      %img.img-responsive{:alt => "product", :src => "assets/data/p40.jpg"}/
-                    .quick-view
-                      %a.heart{:href => "#", :title => "Add to my wishlist"}
-                      %a.compare{:href => "#", :title => "Add to compare"}
-                      %a.search{:href => "#", :title => "Quick view"}
-                    .add-to-cart
-                      %a{:href => "#add", :title => "Add to Cart"} Add to Cart
-                  .right-block
+                    = link_to category_product_path(product.category, product) do
+                      = image_tag(product.image.url(:index), alt: 'product', class: 'img-responsive')
+                    .group-price
+                      - if product.novelty?
+                        %span.product-new Новинка
+                      - if product.old_price.present?
+                        %span.product-sale Скидка
+                  .right-block.text-center
                     %h5.product-name
-                      %a{:href => "#"} Maecenas consequat mauris
-                    .product-star
-                      %i.fa.fa-star
-                      %i.fa.fa-star
-                      %i.fa.fa-star
-                      %i.fa.fa-star
-                      %i.fa.fa-star-half-o
+                      = link_to category_product_path(product.category, product) do
+                        = product.name
                     .content_price
-                      %span.price.product-price $38,95
-                      %span.price.old-price $52,00
-              %li
-                .product-container
-                  .left-block
-                    %a{:href => "#"}
-                      %img.img-responsive{:alt => "product", :src => "assets/data/p35.jpg"}/
-                    .quick-view
-                      %a.heart{:href => "#", :title => "Add to my wishlist"}
-                      %a.compare{:href => "#", :title => "Add to compare"}
-                      %a.search{:href => "#", :title => "Quick view"}
-                    .add-to-cart
-                      %a{:href => "#add", :title => "Add to Cart"} Add to Cart
-                  .right-block
-                    %h5.product-name
-                      %a{:href => "#"} Maecenas consequat mauris
-                    .product-star
-                      %i.fa.fa-star
-                      %i.fa.fa-star
-                      %i.fa.fa-star
-                      %i.fa.fa-star
-                      %i.fa.fa-star-half-o
-                    .content_price
-                      %span.price.product-price $38,95
-                      %span.price.old-price $52,00
-              %li
-                .product-container
-                  .left-block
-                    %a{:href => "#"}
-                      %img.img-responsive{:alt => "product", :src => "assets/data/p37.jpg"}/
-                    .quick-view
-                      %a.heart{:href => "#", :title => "Add to my wishlist"}
-                      %a.compare{:href => "#", :title => "Add to compare"}
-                      %a.search{:href => "#", :title => "Quick view"}
-                    .add-to-cart
-                      %a{:href => "#add", :title => "Add to Cart"} Add to Cart
-                  .right-block
-                    %h5.product-name
-                      %a{:href => "#"} Maecenas consequat mauris
-                    .product-star
-                      %i.fa.fa-star
-                      %i.fa.fa-star
-                      %i.fa.fa-star
-                      %i.fa.fa-star
-                      %i.fa.fa-star-half-o
-                    .content_price
-                      %span.price.product-price $38,95
-                      %span.price.old-price $52,00
-              %li
-                .product-container
-                  .left-block
-                    %a{:href => "#"}
-                      %img.img-responsive{:alt => "product", :src => "assets/data/p39.jpg"}/
-                    .quick-view
-                      %a.heart{:href => "#", :title => "Add to my wishlist"}
-                      %a.compare{:href => "#", :title => "Add to compare"}
-                      %a.search{:href => "#", :title => "Quick view"}
-                    .add-to-cart
-                      %a{:href => "#add", :title => "Add to Cart"} Add to Cart
-                  .right-block
-                    %h5.product-name
-                      %a{:href => "#"} Maecenas consequat mauris
-                    .product-star
-                      %i.fa.fa-star
-                      %i.fa.fa-star
-                      %i.fa.fa-star
-                      %i.fa.fa-star
-                      %i.fa.fa-star-half-o
-                    .content_price
-                      %span.price.product-price $38,95
-                      %span.price.old-price $52,00
-          / ./box product
-          / box product
-          .page-product-box
-            %h3.heading You might also like
-            %ul.product-list.owl-carousel{"data-autoplayhoverpause" => "true", "data-autoplaytimeout" => "1000", "data-dots" => "false", "data-loop" => "true", "data-margin" => "30", "data-nav" => "true", "data-responsive" => "{\"0\":{\"items\":1},\"600\":{\"items\":3},\"1000\":{\"items\":3}}"}
-              %li
-                .product-container
-                  .left-block
-                    %a{:href => "#"}
-                      %img.img-responsive{:alt => "product", :src => "assets/data/p97.jpg"}/
-                    .quick-view
-                      %a.heart{:href => "#", :title => "Add to my wishlist"}
-                      %a.compare{:href => "#", :title => "Add to compare"}
-                      %a.search{:href => "#", :title => "Quick view"}
-                    .add-to-cart
-                      %a{:href => "#add", :title => "Add to Cart"} Add to Cart
-                  .right-block
-                    %h5.product-name
-                      %a{:href => "#"} Maecenas consequat mauris
-                    .product-star
-                      %i.fa.fa-star
-                      %i.fa.fa-star
-                      %i.fa.fa-star
-                      %i.fa.fa-star
-                      %i.fa.fa-star-half-o
-                    .content_price
-                      %span.price.product-price $38,95
-                      %span.price.old-price $52,00
-              %li
-                .product-container
-                  .left-block
-                    %a{:href => "#"}
-                      %img.img-responsive{:alt => "product", :src => "assets/data/p34.jpg"}/
-                    .quick-view
-                      %a.heart{:href => "#", :title => "Add to my wishlist"}
-                      %a.compare{:href => "#", :title => "Add to compare"}
-                      %a.search{:href => "#", :title => "Quick view"}
-                    .add-to-cart
-                      %a{:href => "#add", :title => "Add to Cart"} Add to Cart
-                  .right-block
-                    %h5.product-name
-                      %a{:href => "#"} Maecenas consequat mauris
-                    .product-star
-                      %i.fa.fa-star
-                      %i.fa.fa-star
-                      %i.fa.fa-star
-                      %i.fa.fa-star
-                      %i.fa.fa-star-half-o
-                    .content_price
-                      %span.price.product-price $38,95
-                      %span.price.old-price $52,00
-              %li
-                .product-container
-                  .left-block
-                    %a{:href => "#"}
-                      %img.img-responsive{:alt => "product", :src => "assets/data/p36.jpg"}/
-                    .quick-view
-                      %a.heart{:href => "#", :title => "Add to my wishlist"}
-                      %a.compare{:href => "#", :title => "Add to compare"}
-                      %a.search{:href => "#", :title => "Quick view"}
-                    .add-to-cart
-                      %a{:href => "#add", :title => "Add to Cart"} Add to Cart
-                  .right-block
-                    %h5.product-name
-                      %a{:href => "#"} Maecenas consequat mauris
-                    .product-star
-                      %i.fa.fa-star
-                      %i.fa.fa-star
-                      %i.fa.fa-star
-                      %i.fa.fa-star
-                      %i.fa.fa-star-half-o
-                    .content_price
-                      %span.price.product-price $38,95
-                      %span.price.old-price $52,00
-              %li
-                .product-container
-                  .left-block
-                    %a{:href => "#"}
-                      %img.img-responsive{:alt => "product", :src => "assets/data/p36.jpg"}/
-                    .quick-view
-                      %a.heart{:href => "#", :title => "Add to my wishlist"}
-                      %a.compare{:href => "#", :title => "Add to compare"}
-                      %a.search{:href => "#", :title => "Quick view"}
-                    .add-to-cart
-                      %a{:href => "#add", :title => "Add to Cart"} Add to Cart
-                  .right-block
-                    %h5.product-name
-                      %a{:href => "#"} Maecenas consequat mauris
-                    .product-star
-                      %i.fa.fa-star
-                      %i.fa.fa-star
-                      %i.fa.fa-star
-                      %i.fa.fa-star
-                      %i.fa.fa-star-half-o
-                    .content_price
-                      %span.price.product-price $38,95
-                      %span.price.old-price $52,00
-          / ./box product
-        / Product
+                      - if product.old_price.present?
+                        %span.price.old-price= number_to_currency(product.old_price, locale: :uk, precision: 0)
+                      %span.price.product-price= number_to_currency(product.price, locale: :uk, precision: 0)
+                    %br
+                    .btn.btn-cart-orange
+                      = fa_icon('shopping-cart lg')
+                      В корзину

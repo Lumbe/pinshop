@@ -14,12 +14,6 @@
                   = link_to category do
                     = image_tag('pin-icon', alt: 'pin-icon', class: 'icon-menu')
                     = category.name
-                // - if main_category.subcategories.present?
-                //   - main_category.subcategories.each do |subcategory|
-                //     %ul.tree-menu.sub-menu
-                //       %li
-                //         %span
-                //           // = link_to subcategory.name, category_subcategory_path(subcategory.parent_category, subcategory)
       #main-menu.col-sm-9.main-menu
         %nav.navbar.navbar-default
           .container-fluid
