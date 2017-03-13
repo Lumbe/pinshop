@@ -1,10 +1,11 @@
 .columns-container
   #columns.container
     / breadcrumb
-    .breadcrumb.clearfix
-      %a.home{:href => "#", :title => "Return to Home"} Home
-      %span.navigation-pipe
-      %span.navigation_page Fashion
+    - breadcrumb :category, @category
+    // .breadcrumb.clearfix
+    //   %a.home{:href => "#", :title => "Return to Home"} Home
+    //   %span.navigation-pipe
+    //   %span.navigation_page Fashion
     / ./breadcrumb
     / row
     .row

@@ -29,6 +29,11 @@
  *= require_self
  */
 
+ .breadcrumb {
+   padding-top: 17px;
+   padding-bottom: 0;
+ }
+
 .product-list li .old-price {
   display: inline-block;
 }
