@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/Lumbe/babosa.git
+  revision: 0837ba8c74d4a25ac56ad9c96fec89bb29effcfe
+  branch: master
+  specs:
+    babosa (1.0.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -170,6 +177,8 @@ GEM
       activesupport
       capybara
       i18n
+    friendly_id (5.2.0)
+      activerecord (>= 4.0.0)
     fuubar (2.2.0)
       rspec-core (~> 3.0)
       ruby-progressbar (~> 1.4)
@@ -553,6 +562,7 @@ DEPENDENCIES
   annotate
   autoprefixer-rails
   awesome_print
+  babosa!
   better_errors
   binding_of_caller
   bootstrap-kaminari-views
@@ -573,6 +583,7 @@ DEPENDENCIES
   fancybox-rails
   font-awesome-rails
   formulaic
+  friendly_id
   fuubar
   gmaps4rails
   guard

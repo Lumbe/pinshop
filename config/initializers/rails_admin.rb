@@ -43,6 +43,9 @@ RailsAdmin.config do |config|
       configure :sizes do
         partial 'select_sizes'
       end
+      configure :genders do
+        partial 'select_genders'
+      end
       exclude_fields :image_variants
     end
   end

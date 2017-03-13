@@ -7,10 +7,12 @@
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #  parent_category_id :integer
+#  slug               :string
 #
 # Indexes
 #
 #  index_categories_on_parent_category_id  (parent_category_id)
+#  index_categories_on_slug                (slug) UNIQUE
 #
 # Foreign Keys
 #
@@ -18,6 +20,9 @@
 #
 
 class Category < ApplicationRecord
+  include FriendlyId
+  friendly_id :name, :use => [:slugged]
+
   has_many :products
 
   def min_product_price
@@ -26,6 +31,10 @@ class Category < ApplicationRecord
 
   def max_product_price
     products.map(&:price).max
+  end
+
+  def normalize_friendly_id(input)
+    input.to_s.to_slug.normalize(transliterations: :russian).to_s
   end
 
 end

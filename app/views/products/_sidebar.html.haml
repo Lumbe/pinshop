@@ -18,7 +18,7 @@
     %p.title_block Распродажа
     .block_content.product-onsale
       %ul.product-list.owl-carousel{"data-autoplay" => "true", "data-autoplayHoverPause" => "true", "data-autoplayTimeout" => "1000", "data-items" => "1", "data-loop" => "true", "data-margin" => "0", "data-nav" => "false"}
-        - @product.on_sale.each do |product|
+        - @products_on_sale.each do |product|
           %li
             .product-container
               .left-block

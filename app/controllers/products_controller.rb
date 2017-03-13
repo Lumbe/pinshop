@@ -8,6 +8,8 @@ class ProductsController < ApplicationController
 
   # GET /products/1
   def show
+    @products_on_sale = @product.products_on_sale.includes(:category)
+    @related_products = @product.related_products.includes(:category).limit(10)
   end
 
   # GET /products/new
@@ -48,7 +50,7 @@ class ProductsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
-      @product = Product.find(params[:id])
+      @product = Product.friendly.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.

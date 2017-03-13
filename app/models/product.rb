@@ -21,14 +21,33 @@
 #  size_chart_file_size    :integer
 #  size_chart_updated_at   :datetime
 #  sizes                   :text             default("")
+#  slug                    :string
+#  genders                 :string
+#
+# Indexes
+#
+#  index_products_on_slug  (slug) UNIQUE
 #
 
 class Product < ApplicationRecord
+  include FriendlyId
+  friendly_id :slug_candidates, use: :slugged
+
   SIZE_CHART = %w(XS S M L XL XXL XXXL)
-  serialize :sizes
+  GENDERS = %w(male female unisex)
+  serialize :sizes, Array
+  serialize :genders, Array
 
   before_save do
     self.novelty_expires_at = Time.current + 30.days if self.novelty_expires_at.blank?
+  end
+
+  after_commit do
+    # regenerates friendly_id slug to include :id
+    unless slug.include? self.id.to_s
+      self.slug = nil
+      self.save
+    end
   end
 
   belongs_to :category
@@ -52,12 +71,26 @@ class Product < ApplicationRecord
     !self.novelty_expires_at.blank? && (self.novelty_expires_at > Time.current) ? true : false
   end
 
+
   def related_products
-    category.products.first(10)
+    category.products
   end
 
-  def on_sale
+  def products_on_sale
     category.products.where.not(old_price: nil)
   end
 
+  def slug_candidates
+    [
+      [:id, :name]
+    ]
+  end
+
+  def normalize_friendly_id(input)
+    input.to_s.to_slug.normalize(transliterations: :russian).to_s
+  end
+
+  def should_generate_new_friendly_id?
+    slug.blank?
+  end
 end
