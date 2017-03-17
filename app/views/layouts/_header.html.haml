@@ -37,13 +37,5 @@
             %input{:placeholder => "футболка reebok, спортивный костюм nike...", :type => "text"}/
           %button.pull-right.btn-search{:type => "submit"}
       #cart-block.col-xs-5.col-sm-2.shopping-cart-box
-        = link_to cart_path(@cart), class: 'cart-link' do
-          %span.title
-            Товаров:
-            = @cart.total_items
-          %span.total
-            = number_to_currency(@cart.total_price, locale: :uk) if @cart.line_items.present?
-        - if @cart && @cart.line_items.present?
-          .cart-block
-            - if @cart
-              = render @cart
+        - if @cart
+          = render @cart

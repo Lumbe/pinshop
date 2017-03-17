@@ -1,13 +1,21 @@
-.cart-block-content
-  %h5.cart-title
+= link_to cart_path(cart), class: 'cart-link' do
+  %span.title
     Товаров:
     = cart.total_items
-  %h6= button_to 'очистить корзину', cart, method: :delete, class: 'btn btn-link clear-cart pull-right'
-  .cart-block-list
-    %ul
-      = render cart.line_items
-  .toal-cart
-    %span На сумму
-    %span.toal-price.pull-right= number_to_currency(cart.total_price, locale: :uk) if cart.line_items.present?
-  .cart-buttons
-    = link_to 'Оформить заказ', cart, class: 'btn-check-out'
+  %span.total
+    = number_to_currency(@cart.total_price, locale: :uk) if @cart.line_items.present?
+- if cart.line_items.present?
+  .cart-block
+    .cart-block-content
+      %h5.cart-title
+        Товаров:
+        = cart.total_items
+      %h6= button_to 'очистить корзину', cart, method: :delete, class: 'btn btn-link clear-cart pull-right'
+      .cart-block-list
+        %ul
+          = render cart.line_items
+      .toal-cart
+        %span На сумму
+        %span.toal-price.pull-right= number_to_currency(cart.total_price, locale: :uk) if cart.line_items.present?
+      .cart-buttons
+        = link_to 'Оформить заказ', cart, class: 'btn-check-out'
