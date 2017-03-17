@@ -4,7 +4,7 @@
     = cart.total_items
   %span.total
     = number_to_currency(@cart.total_price, locale: :uk) if @cart.line_items.present?
-- if cart.line_items.present?
+- unless cart.line_items.empty?
   .cart-block
     .cart-block-content
       %h5.cart-title
