@@ -26,8 +26,23 @@
  *= require categories
  *= require fancybox
  *= require product
+ *= require cart
  *= require_self
  */
+
+ .main-header .shopping-cart-box a.cart-link .title {
+   text-transform: none;
+ }
+
+.btn.btn-link.clear-cart {
+  color: #777;
+  padding: 0;
+  margin-top: -20px;
+}
+
+a.cart-link.empty-cart {
+  cursor: default;
+}
 
  .breadcrumb {
    padding-top: 17px;
@@ -83,6 +98,12 @@ ul.sub-menu li {
   background-color: #fff;
   border: 1px solid #FF6633;
 
+}
+
+.btn-cart-orange:focus {
+  color: #fff;
+  background-color: #FF6633;
+  outline: none;
 }
 
 .btn-cart-orange i {

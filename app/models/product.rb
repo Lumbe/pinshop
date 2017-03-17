@@ -35,33 +35,24 @@ class Product < ApplicationRecord
 
   SIZE_CHART = %w(XS S M L XL XXL XXXL)
   GENDERS = %w(male female unisex)
+
   serialize :sizes, Array
   serialize :genders, Array
 
-  before_save do
-    self.novelty_expires_at = Time.current + 30.days if self.novelty_expires_at.blank?
-  end
-
-  after_commit do
-    # regenerates friendly_id slug to include :id
-    unless slug.include? self.id.to_s
-      self.slug = nil
-      self.save
-    end
-  end
-
   belongs_to :category
   has_many :image_variants, dependent: :destroy
-
+  has_many :line_items
   has_attached_file :image, styles: { large: "850x1036>", product: "420x512>", index: "300x366>", thumb: "100x122>" }, default_url: "/images/:style/missing.png"
-  validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
-
   has_attached_file :size_chart, styles: { large: "800x800>", medium: "400x400>", small: "250x250>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
-  validates_attachment_content_type :size_chart, content_type: /\Aimage\/.*\z/
 
-  validates :name, :price, :category, :image, :sizes,
-            presence: true
+  validates :name, :price, :category, :image, :sizes, presence: true
+  validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
+  validates_attachment_content_type :size_chart, content_type: /\Aimage\/.*\z/
   validates :old_price, numericality: { greater_than: :price, allow_blank: true }
+
+  before_save :set_novelty_expiration
+  before_destroy :ensure_not_referenced_by_any_line_item, prepend: true
+  after_commit :regenerate_slug
 
   def create_associated_image(image)
     image_variants.create(image: image)
@@ -70,7 +61,6 @@ class Product < ApplicationRecord
   def novelty?
     !self.novelty_expires_at.blank? && (self.novelty_expires_at > Time.current) ? true : false
   end
-
 
   def related_products
     category.products
@@ -91,6 +81,24 @@ class Product < ApplicationRecord
   end
 
   def should_generate_new_friendly_id?
-    slug.blank? || title_changed?
+    slug.blank? || name_changed?
+  end
+
+  def set_novelty_expiration
+    self.novelty_expires_at = Time.current + 30.days if self.novelty_expires_at.blank?
+  end
+
+  def regenerate_slug
+    unless slug.include? self.id.to_s
+      self.slug = nil
+      self.save
+    end
+  end
+
+  def ensure_not_referenced_by_any_line_item
+    unless line_items.empty?
+      errors.add(:base, 'Товар находится в корзине')
+      throw :abort
+    end
   end
 end

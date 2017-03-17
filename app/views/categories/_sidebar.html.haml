@@ -8,7 +8,7 @@
       .layered.layered-category
         .layered-content
           %ul.tree-menu
-            - @categories.each do |category|
+            - @categories.find_each do |category|
               %li
                 %span
                 = link_to category.name, category
@@ -24,7 +24,7 @@
         .layered_subtitle Категории
         .layered-content
           %ul.check-box-list
-            - @categories.each do |category|
+            - @categories.find_each do |category|
               %li
                 = check_box_tag "#{category.name} - #{category.id}"
                 = label_tag "#{category.name} - #{category.id}" do

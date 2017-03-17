@@ -24,5 +24,6 @@
 //= require jquery.elevatezoom
 //= require jquery-ui
 //= require fancybox
+//= require cart
 //= require_tree ../../../vendor/assets/javascripts/.
 //= require_tree .

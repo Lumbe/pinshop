@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :line_items
+  resources :carts
   root 'home#index'
 
   mount Ckeditor::Engine => '/ckeditor'
@@ -6,7 +8,10 @@ Rails.application.routes.draw do
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
+  get 'invalid_cart' => 'carts#invalid_cart', as: :invalid_cart
+
   resources :categories, path: '/' do
     resources :products, path: '/', only: [:show]
   end
+
 end

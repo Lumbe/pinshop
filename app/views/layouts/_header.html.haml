@@ -37,35 +37,13 @@
             %input{:placeholder => "футболка reebok, спортивный костюм nike...", :type => "text"}/
           %button.pull-right.btn-search{:type => "submit"}
       #cart-block.col-xs-5.col-sm-2.shopping-cart-box
-        %a.cart-link{:href => "order.html"}
-          %span.title Корзина
-          %span.total 2 items - 122.38 €
-          %span.badge.notify-left 2
-        .cart-block
-          .cart-block-content
-            %h5.cart-title В корзине 2 товара
-            .cart-block-list
-              %ul
-                %li.product-info
-                  .p-left
-                    %a.remove_link{:href => "#"}
-                    %a{:href => "#"}
-                      = image_tag('product-100x122', class: 'img-responsive', alt: 'p10')
-                  .p-right
-                    %p.p-name Футболка Reebok
-                    %p.p-rice 61,19 грн.
-                    %p К-во: 1
-                %li.product-info
-                  .p-left
-                    %a.remove_link{:href => "#"}
-                    %a{:href => "#"}
-                      = image_tag('product-s5-100x122', class: 'img-responsive', alt: 'p10')
-                  .p-right
-                    %p.p-name Спортивный костюм Nike
-                    %p.p-rice 61,19 грн.
-                    %p К-во: 1
-            .toal-cart
-              %span На сумму
-              %span.toal-price.pull-right 122.38 грн.
-            .cart-buttons
-              %a.btn-check-out{:href => "order.html"} Оформить заказ
+        = link_to cart_path(@cart), class: 'cart-link' do
+          %span.title
+            Товаров:
+            = @cart.total_items
+          %span.total
+            = number_to_currency(@cart.total_price, locale: :uk) if @cart.line_items.present?
+        - if @cart && @cart.line_items.present?
+          .cart-block
+            - if @cart
+              = render @cart

@@ -1,5 +1,12 @@
 # frozen_string_literal: true
 FactoryGirl.define do
+  factory :line_item do
+    product nil
+    cart nil
+  end
+  factory :cart do
+    
+  end
   factory :product_image do
     
   end

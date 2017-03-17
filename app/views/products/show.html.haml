@@ -32,7 +32,9 @@
             .pb-right-column.col-xs-12.col-sm-6
               %h1.product-name= @product.name
               .info-orther
-                %span.text-muted Код товара: #453217907
+                %span.text-muted
+                  Код товара:
+                  = @product.id
                 - if !@product.in_stock
                   %span.not-in-stock Нет в наличии
               .product-price-group
@@ -42,27 +44,29 @@
                     %span.old-price.text-muted= number_to_currency(@product.old_price, precision: 0, locale: :uk)
                     %br
                     %span.discount= discount(@product.old_price, @product.price)
-              .form-option
-                .attributes.size-chart
-                  .attribute-label Размер:
-                  .attribute-list
-                    = select :product, :sizes, options_for_select(@product.sizes, @product.sizes.first)
-                    - if @product.size_chart.present?
-                      = link_to 'Как подобрать размер?', @product.size_chart.url, id: 'size_chart', class: 'fancybox'
-              .form-action
-                .button-group
-                  .attributes.qty-container
-                    .attribute-list.product-qty
-                      .qty
-                        %input#option-product-qty{:type => "text", :value => "1"}/
-                      .btn-plus
-                        %a.btn-plus-up{:href => "#"}
-                          %i.fa.fa-caret-up
-                        %a.btn-plus-down{:href => "#"}
-                          %i.fa.fa-caret-down
-                  .btn.btn-cart-orange
-                    = fa_icon('shopping-cart lg')
-                    В корзину
+              = form_for @product.line_items.new do |f|
+                = f.hidden_field :product_id, value: "#{@product.id}"
+                .form-option
+                  .attributes.size-chart
+                    .attribute-label Размер:
+                    .attribute-list
+                      = f.select :size, options_for_select(@product.sizes, @product.sizes.first)
+                      - if @product.size_chart.present?
+                        = link_to 'Как подобрать размер?', @product.size_chart.url, id: 'size_chart', class: 'fancybox'
+                .form-action
+                  .button-group
+                    .attributes.qty-container
+                      .attribute-list.product-qty
+                        .qty
+                          = f.text_field :quantity, id: 'option-product-qty', value: '1'
+                        .btn-plus
+                          %a.btn-plus-up{:href => "#"}
+                            %i.fa.fa-caret-up
+                          %a.btn-plus-down{:href => "#"}
+                            %i.fa.fa-caret-down
+                    = f.button class: 'btn btn-cart-orange' do
+                      = fa_icon('shopping-cart lg')
+                      В корзину
               - if @product.description.present?
                 .form-option
                   = sanitize(@product.description)
