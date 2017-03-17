@@ -49,7 +49,7 @@ class LineItemsController < ApplicationController
     @line_item.destroy
     respond_to do |format|
       format.html {redirect_back fallback_location: root_url}
-      format.js {}
+      format.js { @item_id = @line_item.id }
     end
   end
 

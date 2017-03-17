@@ -1,0 +1,5 @@
+$('#cart-block').html("#{j render(@cart)}");
+
+$('#cart-block').effect('highlight', 2000);
+
+$('.item-#{@item_id}').hide('highlight',{color: '#2ECC71'}, 1200);

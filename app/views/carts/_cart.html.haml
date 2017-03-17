@@ -10,7 +10,7 @@
       %h5.cart-title
         Товаров:
         = cart.total_items
-      %h6= button_to 'очистить корзину', cart, method: :delete, class: 'btn btn-link clear-cart pull-right'
+      %h6= button_to 'очистить корзину', cart, method: :delete, remote: true, class: 'btn btn-link clear-cart pull-right'
       .cart-block-list
         %ul
           = render cart.line_items

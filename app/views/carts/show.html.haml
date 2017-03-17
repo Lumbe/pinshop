@@ -29,36 +29,8 @@
               %th.action
                 %i.fa.fa-trash-o
           %tbody
-            - @cart.line_items.find_each do |line_item|
-              %tr
-                %td.cart_product
-                  = link_to category_product_path(line_item.product.category, line_item.product) do
-                    = image_tag(line_item.product.image.url(:thumb), alt: "#{line_item.product.name}")
-                %td.cart_description
-                  %p.product-name
-                    = link_to line_item.product.name, category_product_path(line_item.product.category, line_item.product)
-                  %small.cart_ref
-                    Код товара:
-                    = line_item.product.id
-                  %br/
-                  %small
-                    Размер:
-                    = line_item.size if line_item.size.present?
-                %td.price
-                  %span= number_to_currency(line_item.product.price, locale: :uk)
-                = form_for line_item do |f|
-                  %td.qty
-                    .js-counter
-                      = f.text_field :quantity, class: 'form-control input-sm item-quantity'
-                      %a.qty-btn-plus{:href => "#"}
-                        %i.fa.fa-caret-up
-                      %a.qty-btn-min{:href => "#"}
-                        %i.fa.fa-caret-down
-                %td.price
-                  %span= number_to_currency(line_item.total_price, locale: :uk)
-                %td.action
-                  = link_to 'Delete item', line_item, method: :delete
-                  // %a{:href => "#"} Delete item
+            - if @cart.line_items.present?
+              = render partial: 'line_items/cart_line_item', collection: @cart.line_items, as: :line_item
           %tfoot
             %td{:colspan => "2"}
             %td{:colspan => "2"}
