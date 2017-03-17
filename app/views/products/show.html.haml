@@ -44,7 +44,7 @@
                     %span.old-price.text-muted= number_to_currency(@product.old_price, precision: 0, locale: :uk)
                     %br
                     %span.discount= discount(@product.old_price, @product.price)
-              = form_for @product.line_items.new do |f|
+              = form_for @product.line_items.new, remote: true do |f|
                 = f.hidden_field :product_id, value: "#{@product.id}"
                 .form-option
                   .attributes.size-chart
