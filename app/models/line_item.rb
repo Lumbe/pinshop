@@ -9,6 +9,7 @@
 #  updated_at :datetime         not null
 #  quantity   :integer          default(1)
 #  size       :string
+#  price      :decimal(8, 2)
 #
 # Indexes
 #
@@ -26,6 +27,6 @@ class LineItem < ApplicationRecord
   belongs_to :cart
 
   def total_price
-    product.price * quantity
+    price * quantity
   end
 end

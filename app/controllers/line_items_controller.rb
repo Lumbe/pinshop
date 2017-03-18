@@ -22,6 +22,7 @@ class LineItemsController < ApplicationController
   # POST /line_items
   def create
     line_item = LineItem.new(line_item_params)
+    line_item.price = line_item.product.price
     @line_item = @cart.add_item(line_item)
     respond_to do |format|
       if @line_item.save
@@ -61,6 +62,6 @@ class LineItemsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def line_item_params
-      params.require(:line_item).permit(:product_id, :quantity, :size)
+      params.require(:line_item).permit(:product_id, :quantity, :size, :price)
     end
 end

@@ -13,7 +13,7 @@
       Размер:
       = line_item.size if line_item.size.present?
   %td.price
-    %span= number_to_currency(line_item.product.price, locale: :uk)
+    %span= number_to_currency(line_item.price, locale: :uk)
   = form_for line_item do |f|
     %td.qty
       .js-counter
