@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   get 'invalid_cart' => 'carts#invalid_cart', as: :invalid_cart
 
-  resources :categories, path: '/' do
+  resources :categories, path: '/', only: [:index, :show] do
     resources :products, path: '/', only: [:show]
   end
 

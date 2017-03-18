@@ -35,9 +35,7 @@
                       %span.price.product-price
                         = number_to_currency(product.price, locale: :uk, precision: 0)
                     %br
-                    .btn.btn-cart-orange
-                      = fa_icon('shopping-cart lg')
-                      В корзину
+                    = link_to 'Подробнее', category_product_path(product.category, product), class: 'btn btn-cart-orange'
           #tab-2.tab-panel
             %ul.product-list.owl-carousel{"data-autoplayhoverpause" => "true", "data-autoplaytimeout" => "1000", "data-dots" => "false", "data-loop" => "true", "data-margin" => "30", "data-nav" => "true", "data-responsive" => "{\"0\":{\"items\":1},\"600\":{\"items\":3},\"1000\":{\"items\":4}}"}
               %li
