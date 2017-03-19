@@ -47,6 +47,7 @@ RailsAdmin.config do |config|
         partial 'select_genders'
       end
       exclude_fields :image_variants
+      exclude_fields :line_items
     end
   end
 

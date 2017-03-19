@@ -52,7 +52,7 @@ class Product < ApplicationRecord
 
   before_save :set_novelty_expiration
   before_destroy :ensure_not_referenced_by_any_line_item, prepend: true
-  after_commit :regenerate_slug
+  after_commit :regenerate_slug, on: [:create, :update]
 
   def create_associated_image(image)
     image_variants.create(image: image)

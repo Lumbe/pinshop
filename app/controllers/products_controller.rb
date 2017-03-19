@@ -9,7 +9,7 @@ class ProductsController < ApplicationController
   # GET /products/1
   def show
     @products_on_sale = @product.products_on_sale.includes(:category)
-    @related_products = @product.related_products.includes(:category).limit(10)
+    @related_products = @product.related_products.where.not(id: @product.id).includes(:category).limit(10)
   end
 
   # GET /products/new

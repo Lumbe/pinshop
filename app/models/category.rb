@@ -21,9 +21,9 @@
 
 class Category < ApplicationRecord
   include FriendlyId
-  friendly_id :name, :use => [:slugged]
+  friendly_id :slug_candidates, use: :slugged
 
-  has_many :products
+  has_many :products, dependent: :destroy
 
   def min_product_price
     products.map(&:price).min
@@ -35,6 +35,14 @@ class Category < ApplicationRecord
 
   def normalize_friendly_id(input)
     input.to_s.to_slug.normalize(transliterations: :russian).to_s
+  end
+
+  def slug_candidates
+    [ :name ]
+  end
+
+  def should_generate_new_friendly_id?
+    slug.blank? || name_changed?
   end
 
 end

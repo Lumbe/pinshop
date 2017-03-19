@@ -32,6 +32,4 @@
                   %span.price.old-price= number_to_currency(product.old_price, locale: :uk, precision: 0)
                   %span.price.product-price= number_to_currency(product.price, locale: :uk, precision: 0)
                 %br
-                .btn.btn-cart-orange
-                  = fa_icon('shopping-cart lg')
-                  В корзину
+                = link_to 'Подробнее', category_product_path(product.category, product), class: 'btn btn-cart-orange'
