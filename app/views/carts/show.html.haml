@@ -39,5 +39,4 @@
               %strong= number_to_currency(@cart.total_price, locale: :uk)
         .cart_navigation
           = link_to 'Продолжить покупки', root_path, class: 'prev-btn'
-          %a.next-btn{:href => "#"} Оформить заказ
-
+          = link_to 'Оформить заказ', new_order_path, class: 'next-btn'

@@ -51,6 +51,7 @@ gem 'friendly_id'
 # forked and applied pull request https://github.com/norman/babosa/pull/42
 gem 'babosa', :git => 'https://github.com/Lumbe/babosa.git', :branch => 'master'
 gem "gretel"
+gem 'novaposhta2', '~> 0.0.4'
 
 group :assets do
   gem "sass-rails"

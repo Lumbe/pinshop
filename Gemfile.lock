@@ -310,6 +310,7 @@ GEM
     notiffany (0.1.1)
       nenv (~> 0.1)
       shellany (~> 0.0)
+    novaposhta2 (0.0.4)
     orm_adapter (0.5.0)
     owl_carousel-rails (0.0.1)
       railties (>= 3.1.0)
@@ -610,6 +611,7 @@ DEPENDENCIES
   mailcatcher
   meta_request
   normalize-rails
+  novaposhta2 (~> 0.0.4)
   owl_carousel-rails
   paper_trail
   paperclip (~> 5.1)

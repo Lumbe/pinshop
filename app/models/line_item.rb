@@ -10,15 +10,18 @@
 #  quantity   :integer          default(1)
 #  size       :string
 #  price      :decimal(8, 2)
+#  order_id   :integer
 #
 # Indexes
 #
 #  index_line_items_on_cart_id     (cart_id)
+#  index_line_items_on_order_id    (order_id)
 #  index_line_items_on_product_id  (product_id)
 #
 # Foreign Keys
 #
 #  fk_rails_11e15d5c6b  (product_id => products.id)
+#  fk_rails_2dc2e5c22c  (order_id => orders.id)
 #  fk_rails_af645e8e5f  (cart_id => carts.id)
 #
 

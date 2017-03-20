@@ -1,5 +1,13 @@
 # frozen_string_literal: true
 FactoryGirl.define do
+  factory :order do
+    name "MyString"
+    phone "MyString"
+    email "MyString"
+    city "MyString"
+    warehouse "MyString"
+    pay_type 1
+  end
   factory :line_item do
     product nil
     cart nil
