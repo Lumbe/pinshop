@@ -14,14 +14,16 @@
       = line_item.size if line_item.size.present?
   %td.price
     %span= number_to_currency(line_item.price, locale: :uk)
-  = form_for line_item do |f|
-    %td.qty
-      .js-counter
+  %td.qty
+    .js-counter
+      - if f
         = f.text_field :quantity, class: 'form-control input-sm item-quantity'
         %a.qty-btn-plus{:href => "#"}
           %i.fa.fa-caret-up
         %a.qty-btn-min{:href => "#"}
           %i.fa.fa-caret-down
+      - else
+        = line_item.quantity
   %td.price
     %span= number_to_currency(line_item.total_price, locale: :uk)
   %td.action

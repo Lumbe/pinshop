@@ -1,0 +1,20 @@
+%li
+  .products-block-left
+    %a{:href => "#"}
+      = link_to category_product_path(line_item.product.category, line_item.product) do
+        = image_tag(line_item.product.image.url(:thumb), alt: "#{line_item.product.name}")
+  .products-block-right
+    %p.product-name
+      = link_to line_item.product.name, category_product_path(line_item.product.category, line_item.product)
+    %small.cart_ref
+      Код товара:
+      = line_item.product.id
+    %br/
+    %small
+      Размер:
+      = line_item.size if line_item.size.present?
+    %p.product-price
+      = number_to_currency(line_item.price, precision: 0, locale: :uk)
+      %span.quantity
+        %span.quantity-cross x
+        = line_item.quantity

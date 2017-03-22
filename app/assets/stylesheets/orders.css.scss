@@ -1,0 +1,29 @@
+div#left_column {
+    margin-top: 34px;
+}
+
+.product-price {
+  font-size: 16px;
+  line-height: 25px;
+}
+
+.quantity {
+  color: #333;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.quantity-cross {
+  color: #333;
+  font-size: 13px;
+}
+
+.best-sell li:last-child {
+  border-bottom: 1px solid #eaeaea;
+  padding: 20px 0;
+}
+
+.total-cart {
+  font-size: 16px;
+  padding-top: 10px;
+}

@@ -14,6 +14,15 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @order = Order.new
+    @warehouses ||= []
+
+    respond_to do |format|
+      format.html
+      format.json do
+          @warehouses = Novaposhta2::City.find(params[:city]).warehouses if params[:city] && !params[:city].blank?
+          render json: @warehouses
+      end
+    end
   end
 
   # GET /orders/1/edit
@@ -23,11 +32,14 @@ class OrdersController < ApplicationController
   # POST /orders
   def create
     @order = Order.new(order_params)
-
-    if @order.save
-      redirect_to @order, notice: 'Order was successfully created.'
-    else
-      render :new
+    @order.add_line_items_from_cart(@cart)
+    respond_to do |format|
+      if @order.save
+        format.html { redirect_to thank_you_url }
+        format.json { render :show, status: :created, location: @order }
+      else
+        render :new
+      end
     end
   end
 
@@ -46,6 +58,10 @@ class OrdersController < ApplicationController
     redirect_to orders_url, notice: 'Order was successfully destroyed.'
   end
 
+  def thank_you
+    render 'shared/thank_you'
+  end
+
   private
 
     def ensure_cart_isnt_empty
@@ -60,6 +76,6 @@ class OrdersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def order_params
-      params.require(:order).permit(:name, :phone, :email, :city, :warehouse, :pay_type)
+      params.require(:order).permit(:name, :phone, :email, :city, :warehouse, :pay_type, line_items_attributes: [:id, :quantity])
     end
 end

@@ -35,9 +35,9 @@ class CartsController < ApplicationController
   # PATCH/PUT /carts/1
   def update
     if @cart.update(cart_params)
-      redirect_to @cart, notice: 'Cart was successfully updated.'
+      redirect_to new_order_url, notice: 'Cart was successfully updated.'
     else
-      render :edit
+      render :show
     end
   end
 
@@ -65,7 +65,7 @@ class CartsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def cart_params
-      params.fetch(:cart, {})
+      params.require(:cart).permit(line_items_attributes: [:id, :quantity])
     end
 
     def ensure_proper_cart

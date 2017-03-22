@@ -1,59 +1,77 @@
+- content_for :js do
+  :coffee
+    $(document).ready ->
+      $('#order_city').select2
+        theme: 'bootstrap'
+      get_warehouses = ->
+        $('#order_warehouse').select2
+          theme: 'bootstrap'
+          ajax:
+            url: "#{new_order_path(format: 'json')}"
+            dataType: 'json'
+            data:
+              city: $('#order_city').val()
+            processResults: (data, page) ->
+              { results: $.map(data, (warehouse, i) ->
+                {
+                  id: warehouse.description_ru
+                  text: warehouse.description_ru
+                }
+              ) }
+      get_warehouses()
+      $('#order_city').on 'select2:select', (evt) ->
+        $.ajax
+          url: "#{new_order_path(format: 'json')}"
+          type: 'GET'
+          dataType: 'json'
+          data:
+            city: $(this).val()
+          success: ->
+            $('#order_warehouse').prop('disabled', false)
+            get_warehouses()
+      return
 = form_for @order do |f|
-  .page-content.checkout-page
-    %h3.checkout-sep 1. Checkout Method
-    .box-border
-      .row
+  %h3.checkout-sep 1. Контактные данные
+  .box-border
+    .row
+      .col-sm-6
+        = f.label :name, 'Имя'
+        = f.text_field :name, class: 'form-control input', required: true
+        = f.label :phone, 'Телефон'
+        = f.text_field :phone, class: 'form-control input', required: true
+        = f.label :email, 'Эл.почта'
+        = f.email_field :email, class: 'form-control input'
+  %h3.checkout-sep 2. Доставка - выбор отделения Новой Почты
+  .box-border
+    %ul
+      %li.row
         .col-sm-6
-          = f.label :name, 'Имя'
-          = f.text_field :name, class: 'form-control input'
-          = f.label :phone, 'Телефон'
-          = f.text_field :phone, class: 'form-control input'
-          = f.label :email, 'Эл.почта'
-          = f.email_field :email, class: 'form-control input'
-    %h3.checkout-sep 2. Доставка
-    .box-border
-      %ul
-        %li.row
-          .col-sm-6
-            = f.label :city, 'Населенный пункт'
-            = f.select :city, options_from_collection_for_select(Novaposhta2::City.all, :description, :description), class: 'form-control input'
-        %li.row
-          .col-sm-6
-            %label.required{:for => "last_name"} Отделение Новой Почты
-            %input#last_name.input.form-control{:name => "", :type => "text"}/
-    %h3.checkout-sep 3. Оплата
-    .box-border
-      %ul.shipping_method
-        %li
-          %p.subcaption.bold Наложенный платеж (оплата товара в отделении Новой Почты при получении)
-          = f.label :pay_type do
-            = f.radio_button :pay_type, :on_delivery, checked: true
-            Наложенный платеж
-        %li
-          %p.subcaption.bold Предоплата на банковскую карту
-          = f.label :pay_type do
-            = f.radio_button :pay_type, :prepay, disabled: true, class: 'has-tooltip', data: {toggle: 'tooltip', placement: 'left'}, title: 'Этот метод оплаты пока не доступен',
-            Предоплата
-      %button.button Continue
-    %h3.checkout-sep 4. Обзор заказа
-    .box-border
-      // %table.table.table-bordered.table-responsive.cart_summary
-      //   %thead
-      //     %tr.text-center
-      //       %th.cart_product Товар
-      //       %th Описание
-      //       %th Цена
-      //       %th К-во
-      //       %th Сумма
-      //       %th.action
-      //         %i.fa.fa-trash-o
-      //   %tbody
-      //     - if @order.line_items.present?
-      //       = render partial: 'line_items/cart_line_item', collection: @order.line_items, as: :line_item
-      //   %tfoot
-      //     %td{:colspan => "2"}
-      //     %td{:colspan => "2"}
-      //       %strong Сумма заказа
-      //     %td{:colspan => "2"}
-      //       %strong= number_to_currency(@cart.total_price, locale: :uk)
-      = f.button 'Подтвердить', class: 'button pull-right'
+          = f.label :city, 'Населенный пункт'
+          = f.select :city, options_from_collection_for_select(Novaposhta2::City.all, :description_ru, :description_ru),
+                            {include_blank: true},
+                            class: 'form-control input',
+                            data: {placeholder: 'Выберите город'},
+                            required: true
+      %li.row#novaposhta-warehouses
+        .col-sm-6
+          = f.label :warehouse, 'Отделение Новой Почты'
+          = f.select :warehouse, options_from_collection_for_select(@warehouses, :description_ru, :description_ru),
+                                {include_blank: true},
+                                class: 'form-control input',
+                                data: {placeholder: 'Выберите отделение'},
+                                required: true,
+                                disabled: true
+  %h3.checkout-sep 3. Оплата
+  .box-border
+    %ul.shipping_method
+      %li
+        %p.subcaption.bold Наложенный платеж (оплата товара в отделении Новой Почты при получении)
+        = f.label :pay_type do
+          = f.radio_button :pay_type, :on_delivery, checked: true
+          Наложенный платеж
+      %li
+        %p.subcaption.bold Предоплата на банковскую карту
+        = f.label :pay_type, data: {toggle: 'tooltip', placement: 'left'}, title: 'Этот метод оплаты пока не доступен' do
+          = f.radio_button :pay_type, :prepay, disabled: true
+          Предоплата (временно недоступен)
+  = f.submit 'Заказ подтверждаю', class: 'button'

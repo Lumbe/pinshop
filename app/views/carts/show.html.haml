@@ -18,25 +18,28 @@
         Товаров:
         %span= @cart.total_items
       .order-detail-content
-        %table.table.table-bordered.table-responsive.cart_summary
-          %thead
-            %tr.text-center
-              %th.cart_product Товар
-              %th Описание
-              %th Цена
-              %th К-во
-              %th Сумма
-              %th.action
-                %i.fa.fa-trash-o
-          %tbody
-            - if @cart.line_items.present?
-              = render partial: 'line_items/cart_line_item', collection: @cart.line_items, as: :line_item
-          %tfoot
-            %td{:colspan => "2"}
-            %td{:colspan => "2"}
-              %strong Сумма заказа
-            %td{:colspan => "2"}
-              %strong= number_to_currency(@cart.total_price, locale: :uk)
-        .cart_navigation
-          = link_to 'Продолжить покупки', root_path, class: 'prev-btn'
-          = link_to 'Оформить заказ', new_order_path, class: 'next-btn'
+        = form_for @cart do |f|
+          %table.table.table-bordered.table-responsive.cart_summary
+            %thead
+              %tr.text-center
+                %th.cart_product Товар
+                %th Описание
+                %th Цена
+                %th К-во
+                %th Сумма
+                %th.action
+                  %i.fa.fa-trash-o
+            %tbody
+              - if @cart.line_items.present?
+                - @cart.line_items.each do |line_item|
+                  = f.fields_for :line_items, line_item do |item_f|
+                    = render partial: 'line_items/cart_line_item', locals:{f: item_f, line_item: line_item}
+            %tfoot
+              %td{:colspan => "2"}
+              %td{:colspan => "2"}
+                %strong Сумма заказа
+              %td{:colspan => "2"}
+                %strong= number_to_currency(@cart.total_price, locale: :uk)
+          .cart_navigation
+            = link_to 'Продолжить покупки', root_path, class: 'prev-btn'
+            = f.submit 'Оформить заказ', class: 'next-btn'
