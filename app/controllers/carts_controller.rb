@@ -35,7 +35,7 @@ class CartsController < ApplicationController
   # PATCH/PUT /carts/1
   def update
     if @cart.update(cart_params)
-      redirect_to new_order_url, notice: 'Cart was successfully updated.'
+      redirect_to new_order_url
     else
       render :show
     end

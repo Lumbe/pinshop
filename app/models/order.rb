@@ -11,6 +11,7 @@
 #  pay_type   :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  comment    :text
 #
 
 class Order < ApplicationRecord

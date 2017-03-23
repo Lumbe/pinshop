@@ -13,23 +13,24 @@
                 = link_to category.name, category
       / ./layered
   / ./block category
-  / block best sellers
-  .block.left-module
-    %p.title_block Распродажа
-    .block_content.product-onsale
-      %ul.product-list.owl-carousel{"data-autoplay" => "true", "data-autoplayHoverPause" => "true", "data-autoplayTimeout" => "1000", "data-items" => "1", "data-loop" => "true", "data-margin" => "0", "data-nav" => "false"}
-        - @products_on_sale.each do |product|
-          %li
-            .product-container
-              .left-block
-                = link_to category_product_path(product.category, product) do
-                  = image_tag product.image.url(:index), alt: "#{product.name}", class: 'img-responsive'
-                .price-percent-reduction2 -#{percent_discount(product)}
-              .right-block.text-center
-                %h5.product-name
-                  = link_to product.name, category_product_path(product.category, product)
-                .content_price
-                  %span.price.old-price= number_to_currency(product.old_price, locale: :uk, precision: 0)
-                  %span.price.product-price= number_to_currency(product.price, locale: :uk, precision: 0)
-                %br
-                = link_to 'Подробнее', category_product_path(product.category, product), class: 'btn btn-cart-orange'
+  - unless @products_on_sale.empty?
+    / block best sellers
+    .block.left-module
+      %p.title_block Распродажа
+      .block_content.product-onsale
+        %ul.product-list.owl-carousel{"data-autoplay" => "true", "data-autoplayHoverPause" => "true", "data-autoplayTimeout" => "1000", "data-items" => "1", "data-loop" => "true", "data-margin" => "0", "data-nav" => "false"}
+          - @products_on_sale.each do |product|
+            %li
+              .product-container
+                .left-block
+                  = link_to category_product_path(product.category, product) do
+                    = image_tag product.image.url(:index), alt: "#{product.name}", class: 'img-responsive'
+                  .price-percent-reduction2 -#{percent_discount(product)}
+                .right-block.text-center
+                  %h5.product-name
+                    = link_to product.name, category_product_path(product.category, product)
+                  .content_price
+                    %span.price.old-price= number_to_currency(product.old_price, locale: :uk, precision: 0)
+                    %span.price.product-price= number_to_currency(product.price, locale: :uk, precision: 0)
+                  %br
+                  = link_to 'Подробнее', category_product_path(product.category, product), class: 'btn btn-cart-orange'

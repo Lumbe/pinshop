@@ -11,10 +11,10 @@
           .block.left-module
             %p.title_block
             .block_content
-              %ul.products-block.best-sell
+              %ul.products-block.orders-cart-sidebar
                 - unless @cart.line_items.empty?
                   = render partial: 'cart', collection: @cart.line_items, as: :line_item
               .total-cart
                 %span Итого
                 %span.toal-price.pull-right= number_to_currency(@cart.total_price, precision: 0, locale: :uk)
-              .text-center= link_to 'Редактировать заказ', @cart
+              .text-center= link_to 'Редактировать заказ', @cart, class: 'edit-link'

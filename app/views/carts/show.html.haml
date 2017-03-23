@@ -1,19 +1,6 @@
 .columns-container
   #columns.container
-    %h2.page-heading.no-line
-      %span.page-heading-title2 Оформление заказа
     .page-content.page-order
-      %ul.step
-        %li.current-step
-          %span 01. Summary
-        %li
-          %span 02. Sign in
-        %li
-          %span 03. Address
-        %li
-          %span 04. Shipping
-        %li
-          %span 05. Payment
       .heading-counter.warning
         Товаров:
         %span= @cart.total_items
@@ -42,4 +29,4 @@
                 %strong= number_to_currency(@cart.total_price, locale: :uk)
           .cart_navigation
             = link_to 'Продолжить покупки', root_path, class: 'prev-btn'
-            = f.submit 'Оформить заказ', class: 'next-btn'
+            = f.button 'Оформить заказ', class: 'next-btn'

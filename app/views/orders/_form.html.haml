@@ -74,4 +74,11 @@
         = f.label :pay_type, data: {toggle: 'tooltip', placement: 'left'}, title: 'Этот метод оплаты пока не доступен' do
           = f.radio_button :pay_type, :prepay, disabled: true
           Предоплата (временно недоступен)
+  .question-box
+    %ul.shipping_method
+      %li
+        = button_tag 'Добавить комментарий к заказу', type: 'button', data: {toggle: 'collapse', target: '#order-comment'}
+        // %a{"data-toggle" => "collapse",'data-target' => '#collapseOne', "aria-expanded" => 'false', :role => "button"}
+        #order-comment.collapse
+          = f.text_area :comment, class: 'form-control', size: "5x4"
   = f.submit 'Заказ подтверждаю', class: 'button'

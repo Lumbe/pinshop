@@ -2,7 +2,7 @@ div#left_column {
     margin-top: 34px;
 }
 
-.product-price {
+.orders-cart-sidebar .product-price {
   font-size: 16px;
   line-height: 25px;
 }
@@ -26,4 +26,17 @@ div#left_column {
 .total-cart {
   font-size: 16px;
   padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+a.edit-link {
+  border-bottom: 1px dashed;
+}
+
+.question-box {
+  margin: 20px 0;
+}
+
+.question-box button {
+  padding-bottom: 10px;
 }
