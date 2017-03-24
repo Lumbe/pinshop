@@ -30,8 +30,13 @@
 #
 
 class Product < ApplicationRecord
+  include Filterable
   include FriendlyId
   friendly_id :slug_candidates, use: :slugged
+
+  scope :price, -> (price) { where price: price }
+  scope :sizes, -> (sizes) { where sizes: sizes }
+  # scope :brand, -> (brand) { where brand: brand }
 
   SIZE_CHART = %w(XS S M L XL XXL XXXL)
   GENDERS = %w(male female unisex)
