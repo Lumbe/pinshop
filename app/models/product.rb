@@ -22,7 +22,7 @@
 #  size_chart_updated_at   :datetime
 #  sizes                   :text             default("")
 #  slug                    :string
-#  genders                 :string
+#  gender                  :integer          default("male")
 #
 # Indexes
 #
@@ -41,8 +41,12 @@ class Product < ApplicationRecord
   SIZE_CHART = %w(XS S M L XL XXL XXXL)
   GENDERS = %w(male female unisex)
 
-  serialize :sizes, Array
-  serialize :genders, Array
+  enum sizes: [ :xs, :s, :m, :l, :xl, :xxl]
+  enum gender: {
+    unisex: 0,
+    male: 1,
+    female: 2
+  }
 
   belongs_to :category
   has_many :image_variants, dependent: :destroy

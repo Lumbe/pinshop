@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170322223449) do
+ActiveRecord::Schema.define(version: 20170324132733) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -126,7 +126,7 @@ ActiveRecord::Schema.define(version: 20170322223449) do
     t.datetime "size_chart_updated_at"
     t.text     "sizes",                                           default: ""
     t.string   "slug"
-    t.string   "genders"
+    t.integer  "gender",                                          default: 1
     t.index ["slug"], name: "index_products_on_slug", unique: true, using: :btree
   end
 
