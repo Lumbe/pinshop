@@ -70,7 +70,7 @@
               - if @product.description.present?
                 .form-option
                   = sanitize(@product.description)
-          .page-product-box
+          .page-product-box.related-products
             %h3.heading Вам так же может понравиться
             %ul.product-list.owl-carousel{"data-autoplayhoverpause" => "true", "data-autoplaytimeout" => "1000", "data-dots" => "false", "data-loop" => "true", "data-margin" => "30", "data-nav" => "true", "data-responsive" => "{\"0\":{\"items\":1},\"600\":{\"items\":3},\"1000\":{\"items\":4}}"}
               - @related_products.each do |product|

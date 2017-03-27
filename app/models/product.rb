@@ -20,9 +20,9 @@
 #  size_chart_content_type :string
 #  size_chart_file_size    :integer
 #  size_chart_updated_at   :datetime
-#  sizes                   :text             default("")
 #  slug                    :string
 #  gender                  :integer          default("male")
+#  sizes                   :string           default([]), is an Array
 #
 # Indexes
 #
@@ -41,7 +41,6 @@ class Product < ApplicationRecord
   SIZE_CHART = %w(XS S M L XL XXL XXXL)
   GENDERS = %w(male female unisex)
 
-  enum sizes: [ :xs, :s, :m, :l, :xl, :xxl]
   enum gender: {
     unisex: 0,
     male: 1,
@@ -59,7 +58,7 @@ class Product < ApplicationRecord
   validates_attachment_content_type :size_chart, content_type: /\Aimage\/.*\z/
   validates :old_price, numericality: { greater_than: :price, allow_blank: true }
 
-  before_save :set_novelty_expiration
+  before_create :set_novelty_expiration
   before_destroy :ensure_not_referenced_by_any_line_item, prepend: true
   after_commit :regenerate_slug, on: [:create, :update]
 

@@ -1,1 +1,1 @@
-= form.select :genders, options_for_select(Product::GENDERS), {include_hidden: false}, {class: 'product-genders form-control', multiple: true, data: {placeholder: 'Выберите половую принадлежность'} }
+= form.select :gender, options_for_select(Product.genders.keys), {include_hidden: false}, {class: 'product-genders form-control', data: {placeholder: 'Кому подходит этот товар?'} }
