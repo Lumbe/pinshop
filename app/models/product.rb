@@ -23,6 +23,7 @@
 #  slug                    :string
 #  gender                  :integer          default("male")
 #  sizes                   :string           default([]), is an Array
+#  brand                   :string
 #
 # Indexes
 #
@@ -36,10 +37,10 @@ class Product < ApplicationRecord
 
   scope :price, -> (price) { where price: price }
   scope :sizes, -> (sizes) { where sizes: sizes }
-  # scope :brand, -> (brand) { where brand: brand }
+  scope :brand, -> (brand) { where brand: brand }
 
   SIZE_CHART = %w(XS S M L XL XXL XXXL)
-  GENDERS = %w(male female unisex)
+  BRANDS = ['Nike', 'Reebok', 'Reebok Crossfit']
 
   enum gender: {
     unisex: 0,

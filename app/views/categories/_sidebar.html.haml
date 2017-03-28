@@ -29,7 +29,18 @@
                 min_price: ui.values[0]
                 max_price: ui.values[1]
             return
+
+      $('input.product-brand').on 'click', ->
+        brands = $('input.product-brand').map ->
+          result = if $(this).prop('checked') then $(this).val() else null
+          result
+        $.ajax
+          url: "#{category_path(@category)}"
+          dataType: 'script'
+          data:
+            brand: brands.toArray()
         return
+      return
 / Left colunm
 #left_column.column.col-xs-12.col-sm-3
   / block category
@@ -66,39 +77,15 @@
             \-
             = number_to_currency(@category.max_product_price, precision: 0, locale: :uk)
         / ./filter brand
-        .layered_subtitle brand
+        .layered_subtitle Бренд
         .layered-content.filter-brand
           %ul.check-box-list
-            %li
-              %input#brand1{:name => "cc", :type => "checkbox"}/
-              %label{:for => "brand1"}
-                %span.button
-                Channelo
-                %span.count (0)
-            %li
-              %input#brand2{:name => "cc", :type => "checkbox"}/
-              %label{:for => "brand2"}
-                %span.button
-                Mamypokon
-                %span.count (0)
-            %li
-              %input#brand3{:name => "cc", :type => "checkbox"}/
-              %label{:for => "brand3"}
-                %span.button
-                Pamperson
-                %span.count (0)
-            %li
-              %input#brand4{:name => "cc", :type => "checkbox"}/
-              %label{:for => "brand4"}
-                %span.button
-                Pumano
-                %span.count (0)
-            %li
-              %input#brand5{:name => "cc", :type => "checkbox"}/
-              %label{:for => "brand5"}
-                %span.button
-                AME
-                %span.count (0)
+            - Product::BRANDS.each do |brand|
+              %li
+                = check_box_tag nil, brand, false, id: brand.parameterize(separator: '_'), class: 'product-brand'
+                = label_tag brand.parameterize(separator: '_') do
+                  %span.button
+                  = brand
         / ./filter brand
       / ./layered
   / ./block filter
