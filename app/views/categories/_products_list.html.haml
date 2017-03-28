@@ -1,0 +1,44 @@
+/ view-product-list
+#view-product-list.view-product-list
+  %h2.page-heading
+    %span.page-heading-title= @category.name
+  %ul.display-product-option
+    %li.view-as-grid.selected
+      %span grid
+    %li.view-as-list
+      %span list
+  / PRODUCT LIST
+  %ul.row.product-list.grid
+    - if @products.empty?
+      .container.category-empty
+        В этой категории пока нет товаров
+    - else
+      - @products.each do |product|
+        %li.col-sx-12.col-sm-4
+          .product-container
+            .left-block
+              = link_to category_product_path(product.category, product) do
+                = image_tag(product.image.url(:index), alt: 'product', class: 'img-responsive')
+              .group-price
+                - if product.novelty?
+                  %span.product-new Новинка
+                - if product.old_price.present?
+                  %span.product-sale Скидка
+            .right-block
+              %h5.product-name
+                = link_to category_product_path(product.category, product) do
+                  = product.name
+              .content_price
+                - if product.old_price.present?
+                  %span.price.old-price= number_to_currency(product.old_price, locale: :uk, precision: 0)
+                %span.price.product-price
+                  = number_to_currency(product.price, locale: :uk, precision: 0)
+              .info-orther
+                %p Item Code: #453217907
+                %p.availability
+                  Availability:
+                  %span In stock
+                .product-desc
+                  = truncate(product.description, length: 180, separator: ' ', escape: false)
+              %br
+              = link_to 'Подробнее', category_product_path(product.category, product), class: 'btn btn-cart-orange'
