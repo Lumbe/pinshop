@@ -24,6 +24,7 @@
 #  gender                  :integer          default("male")
 #  sizes                   :string           default([]), is an Array
 #  brand                   :string
+#  trending                :boolean          default(FALSE)
 #
 # Indexes
 #
