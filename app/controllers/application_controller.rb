@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  layout :layout_by_resource
   include CurrentCart
   before_action :set_cart
   before_action :configure_permitted_parameters, if: :devise_controller?
@@ -29,6 +30,13 @@ class ApplicationController < ActionController::Base
     @categories = Category.all
   end
 
+  def layout_by_resource
+    if devise_controller?
+      "devise"
+    else
+      "application"
+    end
+  end
 
   protected :configure_permitted_parameters
 end

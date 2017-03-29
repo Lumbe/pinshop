@@ -34,10 +34,12 @@
                 %span.price.product-price
                   = number_to_currency(product.price, locale: :uk, precision: 0)
               .info-orther
-                %p Item Code: #453217907
-                %p.availability
-                  Availability:
-                  %span In stock
+                %p.text-muted
+                  Код товара:
+                  = product.id
+                - if !product.in_stock
+                  %p.text-danger
+                    Нет в наличии
                 .product-desc
                   = truncate(product.description, length: 180, separator: ' ', escape: false)
               %br
