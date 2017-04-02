@@ -19,4 +19,8 @@ class HomeController < ApplicationController
   def wholesale
     render 'pages/wholesale'
   end
+
+  def contacts
+    render 'pages/contacts'
+  end
 end

@@ -1,0 +1,58 @@
+.columns-container
+  #columns.container
+    / breadcrumb
+    .breadcrumb.clearfix
+      %a.home{:href => "#", :title => "Return to Home"} Home
+      %span.navigation-pipe
+      %span.navigation_page Contact
+    / ./breadcrumb
+    / page heading
+    %h2.page-heading
+      %span.page-heading-title2 Contact Us
+    / ../page heading
+    #contact.page-content.page-contact
+      #message-box-conact
+      .row
+        .col-sm-6
+          %h3.page-subheading CONTACT FORM
+          .contact-form-box
+            .form-selector
+              %label Subject Heading
+              %select#subject.form-control.input-sm
+                %option{:value => "Customer service"} Customer service
+                %option{:value => "Webmaster"} Webmaster
+            .form-selector
+              %label Email address
+              %input#email.form-control.input-sm{:type => "text"}/
+            .form-selector
+              %label Order reference
+              %input#order_reference.form-control.input-sm{:type => "text"}/
+            .form-selector
+              %label Message
+              %textarea#message.form-control.input-sm{:rows => "10"}
+            .form-selector
+              %button#btn-send-contact.btn Send
+        #contact_form_map.col-xs-12.col-sm-6
+          %h3.page-subheading Information
+          %p Lorem ipsum dolor sit amet onsectetuer adipiscing elit. Mauris fermentum dictum magna. Sed laoreet aliquam leo. Ut tellus dolor dapibus eget. Mauris tincidunt aliquam lectus sed vestibulum. Vestibulum bibendum suscipit mattis.
+          %br/
+          %ul
+            %li Praesent nec tincidunt turpis.
+            %li Aliquam et nisi risus. Cras ut varius ante.
+            %li Ut congue gravida dolor, vitae viverra dolor.
+          %br/
+          %ul.store_info
+            %li
+              %i.fa.fa-home>
+              Our business address is 1063 Freelon Street San Francisco, CA 95108
+            %li
+              %i.fa.fa-phone
+              %span + 021.343.7575
+            %li
+              %i.fa.fa-phone
+              %span + 020.566.6666
+            %li
+              %i.fa.fa-envelope>
+              Email:
+              %span
+                %a{:href => "mailto:%73%75%70%70%6f%72%74@%6b%75%74%65%74%68%65%6d%65.%63%6f%6d"} support@kutetheme.com
