@@ -6,4 +6,17 @@ class HomeController < ApplicationController
     @new_products_female = Product.all.select { |product| product.gender == 'female' }
     @sale_products = Product.where.not(old_price: nil)
   end
+
+  def delivery
+    render 'pages/delivery'
+  end
+
+  def discount
+    @discount_products = Product.where.not(old_price: nil)
+    render 'pages/discount'
+  end
+
+  def wholesale
+    render 'pages/wholesale'
+  end
 end

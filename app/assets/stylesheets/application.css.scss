@@ -28,6 +28,7 @@
  *= require product
  *= require cart
  *= require orders
+ *= require wholesale
  *= require_self
  */
 
@@ -132,4 +133,12 @@ ul.sub-menu li {
 
 #footer .footer-phone, #footer .footer-email {
   font-size: 20px;
+}
+
+.content-wrapper {
+  min-height: calc(100vh - 272px);
+}
+
+footer#footer {
+  margin-top: 60px;
 }

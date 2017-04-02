@@ -5,6 +5,11 @@ Rails.application.routes.draw do
   resources :carts
   root 'home#index'
 
+  # menu
+  get 'delivery' => 'home#delivery'
+  get 'discount' => 'home#discount'
+  get 'wholesale' => 'home#wholesale'
+
   mount Ckeditor::Engine => '/ckeditor'
   mount RailsAdmin::Engine => "/admin", as: "rails_admin"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

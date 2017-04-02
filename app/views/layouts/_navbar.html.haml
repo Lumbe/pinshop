@@ -26,11 +26,11 @@
                 %li
                   = link_to "Главная", root_path
                 %li
-                  %a{:href => "category.html"} Распродажа
+                  = link_to 'Скидки', discount_path
                 %li
-                  %a{:href => "category.html"} Доставка и оптала
+                  = link_to 'Доставка и оплата', delivery_path
                 %li
-                  %a{:href => "category.html"} Опт
+                  = link_to 'Оптом', wholesale_path
                 %li
                   %a{:href => "category.html"} Контакты
                 %li

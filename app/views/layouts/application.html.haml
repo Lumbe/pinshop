@@ -20,9 +20,10 @@
 
 
   %body
-    = render 'layouts/flash_messages'
-    = render 'layouts/header'
-    = render 'layouts/navbar'
-    = render 'layouts/breadcrumbs'
-    = yield
+    .content-wrapper
+      = render 'layouts/flash_messages'
+      = render 'layouts/header'
+      = render 'layouts/navbar'
+      = render 'layouts/breadcrumbs'
+      = yield
     = render 'layouts/footer'

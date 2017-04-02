@@ -1,0 +1,21 @@
+.columns-container
+  #columns.container
+    %h2.page-heading
+      %span.page-heading-title2 Доставка и оплата
+    .page-content.checkout-page
+      .panel.panel-info
+        .panel-heading
+          %h2 Доставка
+        .panel-body
+          %p Посылки отправляем каждый день до 15:00. Понедельник - выходной.
+          %p
+            Доставка осуществляется компанией
+            %strong= link_to "Новая Почта", 'https://novaposhta.ua', target: :_blank
+            \- услуга
+            %strong "Наложенный платеж"
+          %p Стоимость доставки - 35-45грн. (оплачивает получатель)
+      .panel.panel-info
+        .panel-heading
+          %h2 Оплата
+        .panel-body
+          Оплата за товар проводится после его получения и осмотра в отделении "Новой Почты"
