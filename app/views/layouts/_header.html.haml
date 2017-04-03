@@ -19,16 +19,12 @@
         = link_to root_url do
           = image_tag('logo', alt: 'Pinshop - интернет-магазин молодежной одежды')
       .col-xs-7.col-sm-7.header-search-box
-        %form.form-inline
+        = form_tag '/search', method: :get, class: 'form-inline' do
           .form-group.form-category
-            %select.select-category
-              %option{:value => "2"} Все категории
-              %option{:value => "1"} Мужская одежда
-              %option{:value => "2"} Женская одежда
-              %option{:value => "2"} Детская одежда
+            Поиск
           .form-group.input-serach
-            %input{:placeholder => "футболка reebok, спортивный костюм nike...", :type => "text"}/
-          %button.pull-right.btn-search{:type => "submit"}
+            = text_field_tag 'search', nil, placeholder: 'футболка, reebok, шорты...'
+          = button_tag '', class: 'pull-right btn-search'
       #cart-block.col-xs-5.col-sm-2.shopping-cart-box
         - if @cart
           = render @cart

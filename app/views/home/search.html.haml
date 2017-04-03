@@ -1,14 +1,14 @@
 .columns-container
   #columns.container
     %h2.page-heading
-      %span.page-heading-title2 Товары со скидкой
+      %span.page-heading-title2 Найдено товаров #{@search_products.count}
     .page-content.checkout-page
       %ul.row.product-list.grid
-        - if @search_products.empty?
+        - if @products.empty?
           .container.category-empty
             Товары не найдены
         - else
-          - @search_products.each do |product|
+          - @products.each do |product|
             %li.col-sx-12.col-sm-3
               .product-container
                 .left-block
@@ -39,3 +39,4 @@
                       = truncate(product.description, length: 180, separator: ' ', escape: false)
                   %br
                   = link_to 'Подробнее', category_product_path(product.category, product), class: 'btn btn-cart-orange'
+      = paginate @products, theme: 'twitter-bootstrap-3'

@@ -33,6 +33,11 @@
  *= require_self
  */
 
+.form-group.form-category {
+    padding: 8px 20px;
+    border-right: 1px solid #eaeaea;
+}
+
 .vertical-center {
   min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
   min-height: 100vh; /* These two lines are counted as one :-)       */
