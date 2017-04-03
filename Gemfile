@@ -65,7 +65,7 @@ group :development do
   gem "rubocop", require: false
   gem "railroady"
   gem "meta_request" # link for chrome add-on. https://chrome.google.com/webstore/detail/railspanel/gjpfobpafnhjhbajcjgccbbdofdckggg
-  gem "mailcatcher"
+  # gem "mailcatcher"
   gem "guard-rubocop"
   gem "guard"
   gem "guard-livereload", "~> 2.4", require: false

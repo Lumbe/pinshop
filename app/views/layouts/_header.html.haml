@@ -2,22 +2,15 @@
   .top-header
     .container
       .nav-top-links
-        %a.first-item{:href => "#"}
-          = fa_icon 'phone', text: '(096) 88-69-888', class: 'top-header-icons'
-        %a{:href => "#"}
-          = fa_icon 'envelope', text: 'pin-shop@mail.ua', class: 'top-header-icons'
+        // %a.first-item{:href => "#"}
+        //   = fa_icon 'phone', text: '(096) 88-69-888', class: 'top-header-icons'
+        // %a{:href => "#"}
+        //   = fa_icon 'envelope', text: 'pin-shop@mail.ua', class: 'top-header-icons'
       .support-link
-        %a{:href => "#"} Доставка и оплата
-        %a{:href => "#"} Контакты
-      #user-info-top.user-info.pull-right
-        .dropdown
-          %a.current-open{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#"}
-            %span Кабинет
-          %ul.dropdown-menu.mega_dropdown{:role => "menu"}
-            %li
-              %a{:href => "login.html"} Войти
-            %li
-              %a{:href => "#"} Желания
+        = fa_icon 'phone', class: 'top-header-icons'
+        = link_to '38 (096) 88-69-888', "tel:+380968869888"
+        = fa_icon 'envelope', class: 'top-header-icons'
+        = link_to 'pin-shop@mail.ua', "mailto:pin-shop@mail.ua"
   / /.top-header
   / MAIN HEADER
   .container.main-header

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'discount' => 'home#discount'
   get 'wholesale' => 'home#wholesale'
   get 'contacts' => 'home#contacts'
+  post 'mail' => 'home#mail'
 
   mount Ckeditor::Engine => '/ckeditor'
   mount RailsAdmin::Engine => "/admin", as: "rails_admin"

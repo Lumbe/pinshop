@@ -23,4 +23,14 @@ class HomeController < ApplicationController
   def contacts
     render 'pages/contacts'
   end
+
+  def mail
+
+    respond_to do |format|
+      format.html
+      format.js do
+        MessageMailer.send_mail(params[:email], params[:message]).deliver
+      end
+    end
+  end
 end

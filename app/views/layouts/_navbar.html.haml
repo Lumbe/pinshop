@@ -26,7 +26,7 @@
                 %li
                   = link_to "Главная", root_path
                 %li
-                  = link_to 'Скидки', discount_path
+                  = link_to 'Распродажа', discount_path
                 %li
                   = link_to 'Доставка и оплата', delivery_path
                 %li
@@ -38,6 +38,7 @@
       / userinfo on top
       #user-info-opntop
       / CART ICON ON MMENU
-      #shopping-cart-box-ontop
-        %i.fa.fa-shopping-cart
-        .shopping-cart-box-ontop-content
+      = link_to cart_path(@cart) do
+        #shopping-cart-box-ontop
+          %i.fa.fa-shopping-cart
+          .shopping-cart-box-ontop-content

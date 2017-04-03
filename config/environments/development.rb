@@ -34,12 +34,8 @@ Rails.application.configure do
     Bullet.rails_logger = true
   end
 
-  if system "lsof -i :1025 | grep mailcatch  > /dev/null"
-    config.action_mailer.delivery_method = :smtp
-    config.action_mailer.smtp_settings = { address: "localhost", port: 1025 }
-  else
-    config.action_mailer.delivery_method = :file
-  end
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = { address: "127.0.0.1", port: 1025 }
 
   config.action_mailer.perform_caching = false
 
@@ -64,5 +60,5 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  config.action_mailer.default_url_options = { host: "localhost:8080" }
+  # config.action_mailer.default_url_options = { host: "localhost:8080" }
 end
