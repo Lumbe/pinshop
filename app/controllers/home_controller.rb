@@ -25,12 +25,15 @@ class HomeController < ApplicationController
   end
 
   def mail
-
     respond_to do |format|
       format.html
       format.js do
         MessageMailer.send_mail(params[:email], params[:message]).deliver
       end
     end
+  end
+
+  def search
+    @search_products
   end
 end

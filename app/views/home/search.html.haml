@@ -1,0 +1,41 @@
+.columns-container
+  #columns.container
+    %h2.page-heading
+      %span.page-heading-title2 Товары со скидкой
+    .page-content.checkout-page
+      %ul.row.product-list.grid
+        - if @search_products.empty?
+          .container.category-empty
+            Товары не найдены
+        - else
+          - @search_products.each do |product|
+            %li.col-sx-12.col-sm-3
+              .product-container
+                .left-block
+                  = link_to category_product_path(product.category, product) do
+                    = image_tag(product.image.url(:index), alt: 'product', class: 'img-responsive')
+                  .group-price
+                    - if product.novelty?
+                      %span.product-new Новинка
+                    - if product.old_price.present?
+                      %span.product-sale Скидка
+                .right-block
+                  %h5.product-name
+                    = link_to category_product_path(product.category, product) do
+                      = product.name
+                  .content_price
+                    - if product.old_price.present?
+                      %span.price.old-price= number_to_currency(product.old_price, locale: :uk, precision: 0)
+                    %span.price.product-price
+                      = number_to_currency(product.price, locale: :uk, precision: 0)
+                  .info-orther
+                    %p.text-muted
+                      Код товара:
+                      = product.id
+                    - if !product.in_stock
+                      %p.text-danger
+                        Нет в наличии
+                    .product-desc
+                      = truncate(product.description, length: 180, separator: ' ', escape: false)
+                  %br
+                  = link_to 'Подробнее', category_product_path(product.category, product), class: 'btn btn-cart-orange'

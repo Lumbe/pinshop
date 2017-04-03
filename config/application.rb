@@ -15,6 +15,7 @@ module Pinshop
 
     config.i18n.enforce_available_locales = true
     config.autoload_paths << Rails.root.join("app/support")
+    config.i18n.default_locale = :ru
 
     # set timizone
     config.time_zone = 'Kyiv'

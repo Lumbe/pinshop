@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'wholesale' => 'home#wholesale'
   get 'contacts' => 'home#contacts'
   post 'mail' => 'home#mail'
+  get 'search' => 'home#search'
 
   mount Ckeditor::Engine => '/ckeditor'
   mount RailsAdmin::Engine => "/admin", as: "rails_admin"

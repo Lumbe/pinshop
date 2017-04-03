@@ -44,3 +44,4 @@
                   = truncate(product.description, length: 180, separator: ' ', escape: false)
               %br
               = link_to 'Подробнее', category_product_path(product.category, product), class: 'btn btn-cart-orange'
+  = paginate @products, :theme => 'twitter-bootstrap-3', remote: true
