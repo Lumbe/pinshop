@@ -1,7 +1,9 @@
 .columns-container
   #columns.container
     %h2.page-heading
-      %span.page-heading-title2 Найдено товаров #{@search_products.count}
+      %span.page-heading-title2 Поиск по каталогу
+      .products-count
+        %small Найдено товаров: #{@search_products.count}
     .page-content.checkout-page
       %ul.row.product-list.grid
         - if @products.empty?
