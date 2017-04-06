@@ -90,6 +90,13 @@ group :development do
   gem "binding_of_caller"
   gem "hirb"
   gem "listen"
+  # deployment
+  gem 'capistrano',         require: false
+  gem 'capistrano-rvm',     require: false
+  gem 'capistrano-rails',   require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano3-puma',   require: false
+  gem 'capistrano-sidekiq', require: false
 end
 
 group :development, :test do
