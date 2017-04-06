@@ -1,5 +1,5 @@
 # Change these
-server '95.85.55.222', port: 8081, roles: [:web, :app, :db], primary: true
+server '95.85.55.222', roles: [:web, :app, :db], primary: true
 
 set :repo_url,        'git@github.com:Lumbe/pinshop.git'
 set :application,     'pinshop'

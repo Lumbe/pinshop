@@ -38,6 +38,7 @@ require 'capistrano/rails'
 require 'capistrano/bundler'
 require 'capistrano/rvm'
 require 'capistrano/puma'
+install_plugin Capistrano::Puma
 require 'capistrano/sidekiq'
 
 # Load custom tasks from `lib/capistrano/tasks` if you have any defined
