@@ -7,7 +7,7 @@
 .table > thead > tr > th {
   text-align: center;
 }
-.page-order .cart_navigation button.next-btn{
+.page-order .cart_navigation button.next-btn {
   float: right;
   background: #FF6633;
   color: #fff;
@@ -15,11 +15,11 @@
   padding: 10px 20px;
 }
 
-.page-order .cart_navigation button.next-btn:hover{
+.page-order .cart_navigation button.next-btn:hover {
   opacity: 0.8;
 }
 
-.page-order .cart_navigation button.next-btn:after{
+.page-order .cart_navigation button.next-btn:after {
   font: normal normal normal 14px/1 FontAwesome;
   content: "\f105";
   padding-left: 15px;

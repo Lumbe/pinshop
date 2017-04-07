@@ -47,9 +47,9 @@
   display: flex;
   align-items: center;
 }
- .main-header .shopping-cart-box a.cart-link .title {
-   text-transform: none;
- }
+.main-header .shopping-cart-box a.cart-link .title {
+ text-transform: none;
+}
 
 .btn.btn-link.clear-cart {
   color: #777;
@@ -61,10 +61,10 @@ a.cart-link.empty-cart {
   cursor: default;
 }
 
- .breadcrumb {
-   padding-top: 17px;
-   padding-bottom: 0;
- }
+.breadcrumb {
+ padding-top: 17px;
+ padding-bottom: 0;
+}
 
 .product-list li .old-price {
   display: inline-block;
