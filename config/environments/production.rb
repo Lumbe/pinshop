@@ -1,11 +1,11 @@
-require Rails.root.join("config/smtp")
+# require Rails.root.join("config/smtp")
 Rails.application.configure do
-  if ENV.fetch("HEROKU_APP_NAME", "").include?("staging-pr-")
-    ENV["PINSHOP_APPLICATION_HOST"] = ENV["HEROKU_APP_NAME"] + ".herokuapp.com"
-  end
+  # if ENV.fetch("HEROKU_APP_NAME", "").include?("staging-pr-")
+  #   ENV["PINSHOP_APPLICATION_HOST"] = ENV["HEROKU_APP_NAME"] + ".herokuapp.com"
+  # end
 
   # Ensure requests are only served from one, canonical host name
-  config.middleware.use Rack::CanonicalHost, ENV.fetch("PINSHOP_APPLICATION_HOST")
+  # config.middleware.use Rack::CanonicalHost, ENV.fetch("PINSHOP_APPLICATION_HOST")
 
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -36,7 +36,7 @@ Rails.application.configure do
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
-  config.action_controller.asset_host = ENV.fetch("PINSHOP_ASSET_HOST", ENV.fetch("PINSHOP_APPLICATION_HOST"))
+  # config.action_controller.asset_host = ENV.fetch("PINSHOP_ASSET_HOST", ENV.fetch("PINSHOP_APPLICATION_HOST"))
 
   # Specifies the header that your server uses for sending files.
   # config.action_dispatch.x_sendfile_header = 'X-Sendfile' # for Apache
