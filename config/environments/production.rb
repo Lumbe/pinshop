@@ -99,6 +99,6 @@ Rails.application.configure do
   # ensure anything that would prevent errors from being propagated to the Raven::Rack middleware are disabled (sentry-raven gem)
   config.action_dispatch.show_exceptions = false
 
-  config.assets.precompile += %w( bx_loader.gif controls.png )
+  # config.assets.precompile += %w( bx_loader.gif controls.png )
 end
 Rack::Timeout.timeout = (ENV["RACK_TIMEOUT"] || 10).to_i
