@@ -673,6 +673,7 @@ DEPENDENCIES
   select2-rails
   sentry-raven
   shoulda-matchers
+  sidekiq
   simple_form
   simplecov
   slim

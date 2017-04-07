@@ -53,6 +53,7 @@ gem 'babosa', :git => 'https://github.com/Lumbe/babosa.git', :branch => 'master'
 gem "gretel"
 gem 'novaposhta2', '~> 0.0.4'
 gem 'ransack', :git => 'https://github.com/activerecord-hackery/ransack.git', :branch => 'master'
+gem 'sidekiq'
 
 group :assets do
   gem "sass-rails"
