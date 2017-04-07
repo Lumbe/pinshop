@@ -10,6 +10,7 @@ gem "pg"
 gem "puma"
 gem "rack-canonical-host"
 gem "rails", "~> 5.0.0"
+gem "therubyracer"
 gem "simple_form"
 gem "title"
 gem "dotenv-rails"
@@ -32,7 +33,6 @@ gem "devise-bootstrap-views"
 gem "twitter-bootstrap-rails"
 gem 'paperclip', '~> 5.1'
 gem "sentry-raven"
-gem "therubyracer"
 
 # shop gems
 gem "font-awesome-rails"
