@@ -39,6 +39,8 @@ class Product < ApplicationRecord
   scope :price, -> (price) { where price: price }
   scope :sizes, -> (sizes) { where sizes: sizes }
   scope :brand, -> (brand) { where brand: brand }
+  scope :trending_products, -> {where trending: true}
+  scope :novelty_products, -> {where 'novelty_expires_at > ?', Time.current}
 
   SIZE_CHART = %w(XS S M L XL XXL XXXL)
   BRANDS = ['Nike', 'Reebok', 'Reebok Crossfit']
@@ -111,4 +113,5 @@ class Product < ApplicationRecord
       throw :abort
     end
   end
+
 end
