@@ -1,59 +1,29 @@
 .container
   .row
     .col-md-12
-      %h2.text-center.home-header Сейчас в тренде
+      %h2.text-center.home-header Рекомендуем
   .row
     .col-xs-12.col-sm-12.page-top-left
       .popular-tabs
-        %ul.nav-tab.nav-tab-center
-          %li.active
-            %a{"data-toggle" => "tab", :href => "#tab-1"} Мужчинам
-          %li
-            %a{"data-toggle" => "tab", :href => "#tab-2"} Женщинам
-        .tab-container
-          #tab-1.tab-panel.active
-            %ul.product-list.owl-carousel{"data-autoplayhoverpause" => "true", "data-autoplaytimeout" => "1000", "data-dots" => "false", "data-loop" => "true", "data-margin" => "30", "data-nav" => "true", "data-responsive" => "{\"0\":{\"items\":1},\"600\":{\"items\":3},\"1000\":{\"items\":4}}"}
-              - @trend_products.each do |product|
-                %li
-                  .left-block
-                    = link_to category_product_path(product.category, product) do
-                      = image_tag(product.image.url(:index), alt: 'product', class: 'img-responsive')
-                    .group-price
-                      - if product.novelty?
-                        %span.product-new Новинка
-                      - if product.old_price.present?
-                        %span.product-sale Скидка
-                  .right-block.text-center
-                    %h5.product-name
-                      = link_to category_product_path(product.category, product) do
-                        = product.name
-                    .content_price
-                      - if product.old_price.present?
-                        %span.price.old-price= number_to_currency(product.old_price, locale: :uk, precision: 0)
-                      %span.price.product-price
-                        = number_to_currency(product.price, locale: :uk, precision: 0)
-                    %br
-                    = link_to 'Подробнее', category_product_path(product.category, product), class: 'btn btn-cart-orange'
-          #tab-2.tab-panel
-            %ul.product-list.owl-carousel{"data-autoplayhoverpause" => "true", "data-autoplaytimeout" => "1000", "data-dots" => "false", "data-loop" => "true", "data-margin" => "30", "data-nav" => "true", "data-responsive" => "{\"0\":{\"items\":1},\"600\":{\"items\":3},\"1000\":{\"items\":4}}"}
-              - @trend_products_female.each do |product|
-                %li
-                  .left-block
-                    = link_to category_product_path(product.category, product) do
-                      = image_tag(product.image.url(:index), alt: 'product', class: 'img-responsive')
-                    .group-price
-                      - if product.novelty?
-                        %span.product-new Новинка
-                      - if product.old_price.present?
-                        %span.product-sale Скидка
-                  .right-block.text-center
-                    %h5.product-name
-                      = link_to category_product_path(product.category, product) do
-                        = product.name
-                    .content_price
-                      - if product.old_price.present?
-                        %span.price.old-price= number_to_currency(product.old_price, locale: :uk, precision: 0)
-                      %span.price.product-price
-                        = number_to_currency(product.price, locale: :uk, precision: 0)
-                    %br
-                    = link_to 'Подробнее', category_product_path(product.category, product), class: 'btn btn-cart-orange'
+        %ul.product-list.owl-carousel{"data-autoplayhoverpause" => "true", "data-autoplaytimeout" => "1000", "data-dots" => "false", "data-loop" => "true", "data-margin" => "30", "data-nav" => "true", "data-responsive" => "{\"0\":{\"items\":1},\"600\":{\"items\":3},\"1000\":{\"items\":4}}"}
+          - @trend_products.each do |product|
+            %li
+              .left-block
+                = link_to category_product_path(product.category, product) do
+                  = image_tag(product.image.url(:index), alt: 'product', class: 'img-responsive')
+                .group-price
+                  - if product.novelty?
+                    %span.product-new Новинка
+                  - if product.old_price.present?
+                    %span.product-sale Скидка
+              .right-block.text-center
+                %h5.product-name
+                  = link_to category_product_path(product.category, product) do
+                    = product.name
+                .content_price
+                  - if product.old_price.present?
+                    %span.price.old-price= number_to_currency(product.old_price, locale: :uk, precision: 0)
+                  %span.price.product-price
+                    = number_to_currency(product.price, locale: :uk, precision: 0)
+                %br
+                = link_to 'Подробнее', category_product_path(product.category, product), class: 'btn btn-cart-orange'
