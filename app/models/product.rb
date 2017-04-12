@@ -43,7 +43,7 @@ class Product < ApplicationRecord
   scope :novelty_products, -> {where 'novelty_expires_at > ?', Time.current}
 
   SIZE_CHART = %w(XS S M L XL XXL XXXL)
-  BRANDS = ['Nike', 'Reebok', 'Reebok Crossfit']
+  BRANDS = ['Nike','Nike Jordan', 'Nike ACG', 'Reebok', 'Reebok Crossfit', 'Adidas', 'Tapout', 'Puma', 'Everlast']
 
   enum gender: {
     unisex: 0,
