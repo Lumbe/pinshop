@@ -41,6 +41,8 @@ module Pinshop
 
     config.active_job.queue_adapter = :delayed_job
     config.filter_parameters << :password
+
+    config.assets.precompile += %w( ckeditor/* )
   end
 end
 
