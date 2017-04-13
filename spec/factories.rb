@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 FactoryGirl.define do
+  factory :brand do
+    name "MyString"
+  end
   factory :order do
     name "MyString"
     phone "MyString"

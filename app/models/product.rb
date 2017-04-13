@@ -23,8 +23,8 @@
 #  slug                    :string
 #  gender                  :integer          default("male")
 #  sizes                   :string           default([]), is an Array
-#  brand                   :string
 #  trending                :boolean          default(FALSE)
+#  brand_id                :integer
 #
 # Indexes
 #
@@ -43,7 +43,6 @@ class Product < ApplicationRecord
   scope :novelty_products, -> {where 'novelty_expires_at > ?', Time.current}
 
   SIZE_CHART = %w(XS S M L XL XXL XXXL)
-  BRANDS = ['Nike','Nike Jordan', 'Nike ACG', 'Reebok', 'Reebok Crossfit', 'Adidas', 'Tapout', 'Puma', 'Everlast']
 
   enum gender: {
     unisex: 0,
@@ -52,6 +51,7 @@ class Product < ApplicationRecord
   }
 
   belongs_to :category
+  belongs_to :brand, optional: true
   has_many :image_variants, dependent: :destroy
   has_many :line_items
   has_attached_file :image, styles: { large: "850x1036>", product: "420x512>", index: "300x366>", thumb: "100x122>" }, default_url: "/images/:style/missing.png"

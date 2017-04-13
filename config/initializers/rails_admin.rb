@@ -48,9 +48,6 @@ RailsAdmin.config do |config|
       configure :sizes do
         partial 'select_sizes'
       end
-      configure :brand do
-        partial 'select_brand'
-      end
       exclude_fields :image_variants
       exclude_fields :line_items
     end

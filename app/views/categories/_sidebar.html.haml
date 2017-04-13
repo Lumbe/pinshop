@@ -80,12 +80,12 @@
         .layered_subtitle Бренд
         .layered-content.filter-brand
           %ul.check-box-list
-            - Product::BRANDS.each do |brand|
+            - Brand.find_each do |brand|
               %li
-                = check_box_tag nil, brand, false, id: brand.parameterize(separator: '_'), class: 'product-brand'
-                = label_tag brand.parameterize(separator: '_') do
+                = check_box_tag nil, brand.id, false, id: brand.name.parameterize(separator: '_'), class: 'product-brand'
+                = label_tag brand.name.parameterize(separator: '_') do
                   %span.button
-                  = brand
+                  = brand.name
         / ./filter brand
       / ./layered
   / ./block filter

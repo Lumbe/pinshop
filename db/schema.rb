@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170329212148) do
+ActiveRecord::Schema.define(version: 20170413080945) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "brands", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -127,8 +133,8 @@ ActiveRecord::Schema.define(version: 20170329212148) do
     t.string   "slug"
     t.integer  "gender",                                          default: 1
     t.string   "sizes",                                           default: [],                 array: true
-    t.string   "brand"
     t.boolean  "trending",                                        default: false
+    t.integer  "brand_id"
     t.index ["slug"], name: "index_products_on_slug", unique: true, using: :btree
   end
 
