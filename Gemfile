@@ -28,7 +28,7 @@ gem "haml-rails"
 gem 'slim' # dependency for rendering views of 'ack_rails_admin_jcrop'
 gem "gmaps4rails"
 gem "devise"
-gem "ckeditor"
+gem 'ckeditor', git: "https://github.com/galetahub/ckeditor.git"
 gem "devise-bootstrap-views"
 gem "twitter-bootstrap-rails"
 gem 'paperclip', '~> 5.1'
