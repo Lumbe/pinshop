@@ -38,7 +38,7 @@ class Product < ApplicationRecord
 
   scope :price, -> (price) { where price: price }
   scope :sizes, -> (sizes) { where sizes: sizes }
-  scope :brand, -> (brand) { where brand: brand }
+  scope :brand, -> (brand) { where brand_id: brand }
   scope :trending_products, -> {where trending: true}
   scope :novelty_products, -> {where 'novelty_expires_at > ?', Time.current}
 
