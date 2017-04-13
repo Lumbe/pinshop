@@ -100,5 +100,6 @@ Rails.application.configure do
   config.action_dispatch.show_exceptions = false
 
   # config.assets.precompile += %w( bx_loader.gif controls.png )
+  config.assets.precompile += %w( ckeditor/* )
 end
 Rack::Timeout.timeout = (ENV["RACK_TIMEOUT"] || 10).to_i
