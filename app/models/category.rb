@@ -25,6 +25,10 @@ class Category < ApplicationRecord
 
   has_many :products, dependent: :destroy
 
+  def brands
+    products.map(&:brand).uniq.sort_by(&:name)
+  end
+
   def min_product_price
     products.map(&:price).min
   end
