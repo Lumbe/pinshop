@@ -24,7 +24,7 @@
               .product-container
                 .left-block
                   = link_to category_product_path(product.category, product) do
-                    = image_tag product.image.url(:index), alt: "#{product.name}", class: 'img-responsive'
+                    = image_tag product.image.url(:index), alt: "#{product.name} купить Украина", class: 'img-responsive'
                   .price-percent-reduction2 -#{percent_discount(product)}
                 .right-block.text-center
                   %h5.product-name

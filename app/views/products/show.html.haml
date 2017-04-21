@@ -1,3 +1,6 @@
+= content_for :title do
+  = @product.name
+  купить Украина
 - breadcrumb :product, @product
 .columns-container
   #columns.container
@@ -13,19 +16,21 @@
               .product-image
                 .product-full
                   = image_tag @product.image.url(:product),
-                              alt: "#{@product.name}",
+                              alt: "#{@product.name} купить Украина",
                               id: 'product-zoom',
                               data: {"zoom-image" => "#{@product.image.url(:large)}"}
                 #gallery_01.product-img-thumb
                   %ul.owl-carousel{"data-dots" => "false", "data-items" => "3", "data-margin" => "20", "data-nav" => "true"}
                     %li
                       = link_to '#', data: {'image' => @product.image.url(:product), 'zoom-image' => @product.image.url(:large)} do
-                        = image_tag @product.image.url(:thumb), id: 'product-zoom'
+                        = image_tag @product.image.url(:thumb),
+                                      alt: "#{@product.name} купить Украина",
+                                      id: 'product-zoom'
                     - @product.image_variants.each do |image_variant|
                       %li
                         = link_to '#', data: {'image' => image_variant.image.url(:product), 'zoom-image' => image_variant.image.url(:large)} do
                           = image_tag image_variant.image.url(:thumb),
-                                      alt: "#{@product.name}",
+                                      alt: "#{@product.name} купить Украина",
                                       id: 'product-zoom',
                                       data: {"zoom-image" => "#{image_variant.image.url(:large)}"}
                 / product-imge
@@ -77,7 +82,7 @@
                 %li
                   .left-block
                     = link_to category_product_path(product.category, product) do
-                      = image_tag(product.image.url(:index), alt: 'product', class: 'img-responsive')
+                      = image_tag(product.image.url(:index), alt: "#{product.name} купить Украина", class: 'img-responsive')
                     .group-price
                       - if product.novelty?
                         %span.product-new Новинка
