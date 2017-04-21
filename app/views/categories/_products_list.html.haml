@@ -11,7 +11,7 @@
   %ul.row.product-list.grid
     - if @products.empty?
       .container.category-empty
-        В этой категории пока нет товаров
+        Товары не найдены
     - else
       - @products.each do |product|
         %li.col-sx-12.col-sm-4
@@ -42,6 +42,6 @@
                     Нет в наличии
                 .product-desc
                   = truncate(product.description, length: 180, separator: ' ', escape: false)
-              .product-list-button
+              %strong.product-list-button
                 = link_to 'Подробнее', category_product_path(product.category, product), class: 'btn btn-cart-orange'
   = paginate @products, :theme => 'twitter-bootstrap-3', remote: true
