@@ -35,6 +35,11 @@
  *= require_self
  */
 
+/* top progress bar color*/
+$nprogress-color: #ff6633;
+@import 'nprogress';
+@import 'nprogress-bootstrap';
+
 .form-group.form-category {
     padding: 8px 20px;
     border-right: 1px solid #eaeaea;

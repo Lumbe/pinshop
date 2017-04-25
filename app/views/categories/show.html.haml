@@ -9,4 +9,15 @@
       = render 'sidebar'
       / Center colunm
       #center_column.center_column.col-xs-12.col-sm-9
-        = render 'products_list'
+        / view-product-list
+        #view-product-list.view-product-list
+          %h2.page-heading
+            %span.page-heading-title= @category.name
+          %ul.display-product-option
+            %li.view-as-grid.selected
+              %span grid
+            %li.view-as-list
+              %span list
+          / PRODUCT LIST
+          %ul.row.product-list.grid
+            = render 'products_list'

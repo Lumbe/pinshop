@@ -13,6 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
+//= require nprogress
+//= require nprogress-ajax
 //= require underscore
 //= require gmaps/google
 //= require ckeditor/init

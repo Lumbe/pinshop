@@ -54,6 +54,7 @@ gem "gretel"
 gem 'novaposhta2', '~> 0.0.4'
 gem 'ransack', :git => 'https://github.com/activerecord-hackery/ransack.git', :branch => 'master'
 gem 'sidekiq'
+gem 'nprogress-rails' # progress bar
 
 group :assets do
   gem "sass-rails"
