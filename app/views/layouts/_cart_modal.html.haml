@@ -1,0 +1,16 @@
+#cart-modal.modal.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog{:role => "document"}
+    .modal-content
+      .modal-header
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+        %h4#myModalLabel.modal-title.text-center Вы добавили товар в корзину
+      .modal-body
+        .modal-cart-block
+          .cart-block-content
+            .cart-block-list
+              %ul
+                = render @cart.line_items
+      .modal-footer
+        = link_to 'Продолжить покупки', '#', class: 'prev-btn', data: {dismiss: 'modal'}
+        = link_to 'Оформить заказ', @cart, class: 'next-btn'
