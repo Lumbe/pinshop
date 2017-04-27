@@ -22,23 +22,30 @@
             t.closest('.slider-range').find('.amount-range-price').html result
             return
           change: (event, ui) ->
+            window.minPrice = ui.values[0]
+            window.maxPrice = ui.values[1]
+            if (window.brands)
+              brands = window.brands.toArray()
             $.ajax
               url: "#{category_path(@category)}"
               dataType: 'script'
               data:
+                brand: brands
                 min_price: ui.values[0]
                 max_price: ui.values[1]
             return
 
       $('input.product-brand').on 'click', ->
-        brands = $('input.product-brand').map ->
+        window.brands = $('input.product-brand').map ->
           result = if $(this).prop('checked') then $(this).val() else null
           result
         $.ajax
           url: "#{category_path(@category)}"
           dataType: 'script'
           data:
-            brand: brands.toArray()
+            brand: window.brands.toArray()
+            min_price: window.minPrice
+            max_price: window.maxPrice
         return
       return
 / Left colunm
