@@ -24,11 +24,12 @@ class HomeController < ApplicationController
     render 'pages/contacts'
   end
 
-  def mail
+  def feedback
     respond_to do |format|
       format.html
       format.js do
-        MessageMailer.send_mail(params[:email], params[:message]).deliver
+        mail = MessageMailer.feedback(params[:email], params[:message])
+        mail.deliver
       end
     end
   end

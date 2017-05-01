@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get 'discount' => 'home#discount'
   get 'wholesale' => 'home#wholesale'
   get 'contacts' => 'home#contacts'
-  post 'mail' => 'home#mail'
+  post 'feedback' => 'home#feedback'
   get 'search' => 'home#search'
 
   mount Ckeditor::Engine => '/ckeditor'

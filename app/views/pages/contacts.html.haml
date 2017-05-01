@@ -12,7 +12,7 @@
         .col-sm-6
           %h3.page-subheading Задайте вопрос
           .contact-form-box
-            = form_tag '/mail', remote: true do
+            = form_tag feedback_url, remote: true do
               .form-selector
                 = label_tag 'Ваш Email'
                 = text_field_tag 'email', nil, class: 'form-control input-sm', required: true

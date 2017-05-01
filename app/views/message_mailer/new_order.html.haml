@@ -1,0 +1,14 @@
+Заказ № #{@order.id}
+Имя: #{@order.name}
+Телефон: #{@order.phone}
+- if @order.email.exists?
+  Электронная почта: #{@order.email}
+Город: #{@order.city}
+Склад Новой Почты: #{order.warehouse}
+Доставка:
+- case @order.pay_type
+  when "on_delivery"
+    Наложенным платежом
+  when "prepay"
+    Предоплата на карту Приватбанка
+Комментарий: #{@order.comment}

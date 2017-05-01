@@ -34,8 +34,8 @@ Rails.application.configure do
     Bullet.rails_logger = true
   end
 
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = { address: "127.0.0.1", port: 1025 }
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.smtp_settings = { address: "127.0.0.1", port: 1025 }
 
   config.action_mailer.perform_caching = false
 
@@ -61,4 +61,9 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   # config.action_mailer.default_url_options = { host: "localhost:8080" }
+  config.action_mailer.delivery_method = :mailgun
+  config.action_mailer.mailgun_settings = {
+    api_key: 'key-a59abbc67d0dca5f43905227e9cf42ba',
+    domain: 'mg.pinshop.com.ua'
+  }
 end

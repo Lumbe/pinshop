@@ -101,5 +101,10 @@ Rails.application.configure do
 
   # config.assets.precompile += %w( bx_loader.gif controls.png )
   config.assets.precompile += %w( ckeditor/* )
+  config.action_mailer.delivery_method = :mailgun
+  config.action_mailer.mailgun_settings = {
+    api_key: 'key-a59abbc67d0dca5f43905227e9cf42ba',
+    domain: 'mg.pinshop.com.ua'
+  }
 end
 Rack::Timeout.timeout = (ENV["RACK_TIMEOUT"] || 10).to_i

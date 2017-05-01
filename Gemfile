@@ -55,6 +55,7 @@ gem 'novaposhta2', '~> 0.0.4'
 gem 'ransack', :git => 'https://github.com/activerecord-hackery/ransack.git', :branch => 'master'
 gem 'sidekiq'
 gem 'nprogress-rails' # progress bar
+gem 'mailgun_rails'
 
 group :assets do
   gem "sass-rails"
