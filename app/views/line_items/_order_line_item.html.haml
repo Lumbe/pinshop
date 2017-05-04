@@ -1,0 +1,20 @@
+%tr{class: "item-#{line_item.id}"}
+  %td.cart_product
+    = link_to category_product_url(line_item.product.category, line_item.product) do
+      = image_tag(line_item.product.image.url(:thumb), alt: "#{line_item.product.name}")
+  %td.cart_description
+    %p.product-name
+      = link_to line_item.product.name, category_product_url(line_item.product.category, line_item.product)
+    %small.cart_ref
+      Код товара:
+      = line_item.product.id
+    %br/
+    %small
+      Размер:
+      = line_item.size if line_item.size.present?
+  %td.price
+    %span= number_to_currency(line_item.price, locale: :uk)
+  %td.qty
+    = line_item.quantity
+  %td.price
+    %span= number_to_currency(line_item.total_price, locale: :uk)

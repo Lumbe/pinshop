@@ -37,8 +37,8 @@ class OrdersController < ApplicationController
       if @order.save
         mail = MessageMailer.new_order('pin-shop@mail.ua', @order)
         mail.deliver
-        format.html { redirect_to thank_you_url }
-        format.json { render :show, status: :created, location: @order }
+        format.html
+        format.js
       else
         render :new
       end
@@ -61,7 +61,10 @@ class OrdersController < ApplicationController
   end
 
   def thank_you
-    render 'shared/thank_you'
+    respond_to do |format|
+      format.html {redirect_to root_url}
+      format.js {redirect_to root_url}
+    end
   end
 
   private

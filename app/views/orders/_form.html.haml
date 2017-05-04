@@ -30,7 +30,7 @@
             $('#order_warehouse').prop('disabled', false)
             get_warehouses()
       return
-= form_for @order do |f|
+= form_for @order, remote: true do |f|
   %h3.checkout-sep 1. Контактные данные
   .box-border
     .row

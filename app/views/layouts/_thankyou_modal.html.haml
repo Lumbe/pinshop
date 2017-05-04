@@ -1,0 +1,14 @@
+#thankyou-modal.modal.fade{"aria-labelledby" => "thankyou-label", :role => "dialog", :tabindex => "-1", data: {backdrop: 'static', keyboard: 'false'} }
+  .modal-dialog{:role => "document"}
+    .modal-content
+      .modal-header
+        %h4#thankyou-label.modal-title.text-center Спасибо за заказ!
+      .modal-body
+        - if @order.present?
+          %h3.text-center Ваш заказ №#{@order.id}
+          %br
+        Мы отправляем товар каждый день до 15:00 (Понедельник - выходной).
+        %br
+        Если возникнут вопросы касательно заказа, мы с Вами свяжемся
+      .modal-footer.text-center
+        = link_to 'ОК', thank_you_path, class: 'btn btn-cart-orange'
