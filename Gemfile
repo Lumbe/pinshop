@@ -56,6 +56,7 @@ gem 'ransack', :git => 'https://github.com/activerecord-hackery/ransack.git', :b
 gem 'sidekiq'
 gem 'nprogress-rails' # progress bar
 gem 'mailgun_rails'
+gem 'premailer-rails'
 
 group :assets do
   gem "sass-rails"

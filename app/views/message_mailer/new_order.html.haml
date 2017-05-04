@@ -1,14 +1,57 @@
-Заказ № #{@order.id}
-Имя: #{@order.name}
-Телефон: #{@order.phone}
-- if @order.email.exists?
-  Электронная почта: #{@order.email}
-Город: #{@order.city}
-Склад Новой Почты: #{order.warehouse}
-Доставка:
-- case @order.pay_type
-  when "on_delivery"
-    Наложенным платежом
-  when "prepay"
-    Предоплата на карту Приватбанка
-Комментарий: #{@order.comment}
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    = stylesheet_link_tag 'style', media: 'all'
+  %body
+    %h3 Заказ № #{@order.id}
+    %div
+      Имя:
+      %strong #{@order.name}
+    %div
+      Телефон:
+      %strong #{@order.phone}
+    %div
+      - if @order.email.present?
+        Электронная почта:
+        %strong #{@order.email}
+    %div
+      %h3 Адрес доставки
+      Город:
+      %strong #{@order.city}
+      %br
+      Новая Почта:
+      %strong #{@order.warehouse}
+    %div
+      Тип доставки:
+      - case @order.pay_type
+      - when "on_delivery"
+        %strong Наложенным платежом
+      - when "prepay"
+        %strong Предоплата на карту Приватбанка
+    - if @order.comment.present?
+      %div Комментарий: #{@order.comment}
+    %br
+    %div
+      .heading-counter.warning
+        Товаров:
+        %strong= @order.total_items
+      .order-detail-content
+        %table.table.table-bordered.table-responsive.cart_summary
+          %thead
+            %tr.text-center
+              %th.cart_product Товар
+              %th Описание
+              %th Цена
+              %th К-во
+              %th Сумма
+          %tbody
+            - if @order.line_items.present?
+              - @order.line_items.each do |line_item|
+                = render partial: 'line_items/order_line_item', locals: {line_item: line_item}
+          %tfoot
+            %td{:colspan => "2"}
+            %td{:colspan => "2"}
+              %strong Сумма заказа
+            %td{:colspan => "2"}
+              %strong= number_to_currency(@order.total_price, locale: :uk)

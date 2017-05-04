@@ -1,11 +1,10 @@
 class MessageMailer < ApplicationMailer
-  default from: "Pin-Shop <pin-shop@mail.ua>"
+  default from: "PinShop <postmaster@mg.pinshop.com.ua>"
 
   def feedback(email, message)
     @email = email
     @message = message
-    mail from: email,
-        to: 'pin-shop@mail.ua',
+    mail to: 'pin-shop@mail.ua',
         subject: 'Вопрос - ИМ Pin-Shop'
   end
 
@@ -13,6 +12,6 @@ class MessageMailer < ApplicationMailer
     @email = email
     @order = order
     mail to: 'pin-shop@mail.ua',
-        subject: "Новый заказ №#{@order.id}"
+        subject: "Новый заказ"
   end
 end
