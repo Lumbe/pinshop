@@ -101,6 +101,9 @@ Rails.application.configure do
 
   # config.assets.precompile += %w( bx_loader.gif controls.png )
   config.assets.precompile += %w( ckeditor/* )
+
+  config.action_mailer.default_url_options  = { host: 'pinshop.com.ua' }
+  config.action_mailer.asset_host = 'http://pinshop.com.ua'
   config.action_mailer.delivery_method = :mailgun
   config.action_mailer.mailgun_settings = {
     api_key: 'key-a59abbc67d0dca5f43905227e9cf42ba',

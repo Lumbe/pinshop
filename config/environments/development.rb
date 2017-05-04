@@ -61,9 +61,12 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   # config.action_mailer.default_url_options = { host: "localhost:8080" }
+  config.action_mailer.default_url_options  = { host: ENV["C9_HOSTNAME"] }
+  config.action_mailer.asset_host = 'https://shop-lumbe.c9users.io'
   config.action_mailer.delivery_method = :mailgun
   config.action_mailer.mailgun_settings = {
     api_key: 'key-a59abbc67d0dca5f43905227e9cf42ba',
     domain: 'mg.pinshop.com.ua'
   }
+
 end
