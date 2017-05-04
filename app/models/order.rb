@@ -15,6 +15,8 @@
 #
 
 class Order < ApplicationRecord
+  include Calculator
+
   enum pay_type: {
     'on_delivery' => 0,
     'prepay' => 1
