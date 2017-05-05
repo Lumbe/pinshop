@@ -63,6 +63,16 @@ RailsAdmin.config do |config|
     end
   end
 
+  config.model Slider do
+    configure :category_id do
+      partial 'categories'
+    end
+
+    configure :brand_id do
+      partial 'brands'
+    end
+  end
+
   config.actions do
     dashboard                     # mandatory
     index                         # mandatory

@@ -3,9 +3,10 @@
     .col-sm-3
     .col-xs-12.col-sm-9.center_column
       #main-page-slider.owl-carousel.owl-theme
-        = image_tag('theme-images/main-slide.jpg')
-        = image_tag('theme-images/main-slide.jpg')
-        = image_tag('theme-images/main-slide.jpg')
+        - @home_slider.find_each do |slide|
+          %div{class: "slide-#{slide.id}"}
+            = link_to category_path(id: slide.category.slug, brand: slide.brand_id) do
+              = image_tag(slide.slide(:medium))
 .container
   .service
     .col-xs-12.col-sm-4.service-item

@@ -24,6 +24,7 @@ class Category < ApplicationRecord
   friendly_id :slug_candidates, use: :slugged
 
   has_many :products, dependent: :destroy
+  has_many :sliders
 
   def brands
     products.where.not(brand: nil).map(&:brand).uniq.sort_by(&:name)

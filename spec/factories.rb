@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 FactoryGirl.define do
+  factory :slider do
+    visible false
+  end
   factory :brand do
     name "MyString"
   end

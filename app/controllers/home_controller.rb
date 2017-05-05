@@ -5,6 +5,7 @@ class HomeController < ApplicationController
     @new_products = Product.novelty_products.order(created_at: :desc)
     @new_products_female = Product.all.select { |product| product.gender == 'female' }
     @sale_products = Product.where.not(old_price: nil)
+    @home_slider = Slider.where(visible: true)
   end
 
   def delivery

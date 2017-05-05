@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170413080945) do
+ActiveRecord::Schema.define(version: 20170505202838) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -136,6 +136,18 @@ ActiveRecord::Schema.define(version: 20170413080945) do
     t.boolean  "trending",                                        default: false
     t.integer  "brand_id"
     t.index ["slug"], name: "index_products_on_slug", unique: true, using: :btree
+  end
+
+  create_table "sliders", force: :cascade do |t|
+    t.boolean  "visible",            default: true
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.string   "slide_file_name"
+    t.string   "slide_content_type"
+    t.integer  "slide_file_size"
+    t.datetime "slide_updated_at"
+    t.integer  "category_id"
+    t.integer  "brand_id",           default: [],                array: true
   end
 
   create_table "users", force: :cascade do |t|

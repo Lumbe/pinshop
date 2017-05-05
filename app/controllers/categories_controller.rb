@@ -5,7 +5,9 @@ class CategoriesController < ApplicationController
   def show
     @category = Category.friendly.find(params[:id])
     respond_to do |format|
-      format.html { @products = @category.products.includes(:category).order(created_at: :desc).per_page_kaminari(params[:page]).per(9) }
+      format.html do
+        @products = @category.products.includes(:category).filter(params.slice(:brand)).order(created_at: :desc).per_page_kaminari(params[:page]).per(9)
+      end
       format.js do
         @products = @category.products.includes(:category).filter(params.slice(:brand)).order(created_at: :desc).per_page_kaminari(params[:page]).per(9)
         @products = @products.where(price: params[:min_price]..params[:max_price]).order(created_at: :desc).per_page_kaminari(params[:page]).per(9) if params[:min_price] && params[:max_price]

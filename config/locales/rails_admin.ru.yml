@@ -159,3 +159,8 @@ ru:
       product: "Товары"
       order: 'Заказы'
       category: 'Категории'
+      slider: 'Слайды'
+    attributes:
+      slider:
+        category_id: 'Ссылка на категорию'
+        brand_id: 'Отфильтровать по брендам(опционально)'

@@ -1,0 +1,1 @@
+= form.select :brand_id, options_from_collection_for_select(Brand.all, :id, :name), {include_hidden: false}, {class: 'form-control', multiple: true, data: {placeholder: 'Выберите бренды'} }
