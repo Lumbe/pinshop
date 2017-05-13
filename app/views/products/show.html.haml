@@ -6,8 +6,7 @@
   #columns.container
     / row
     .row
-      = render 'sidebar'
-      #center_column.center_column.col-xs-12.col-sm-9
+      #center_column.center_column.col-xs-12.col-sm-9.pull-right
         / Product
         #product
           .primary-box.row
@@ -98,3 +97,4 @@
                       %span.price.product-price= number_to_currency(product.price, locale: :uk, precision: 0)
                     %br
                     = link_to 'Подробнее', category_product_path(product.category, product), class: 'btn btn-cart-orange'
+      = render 'sidebar'
