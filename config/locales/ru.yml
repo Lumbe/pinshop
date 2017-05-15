@@ -260,3 +260,11 @@ ru:
     pm: вечера
   titles:
     application: Pinshop
+  activerecord:
+    attributes:
+      order:
+        status:
+          newly: Новый
+          sent: Отправлен
+          sold: Получена оплата
+          returned: Возвращен

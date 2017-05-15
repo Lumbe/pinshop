@@ -164,3 +164,10 @@ ru:
       slider:
         category_id: 'Ссылка на категорию'
         brand_id: 'Отфильтровать по брендам(опционально)'
+      order:
+        status: 'Статус'
+      order/status:
+        newly: 'Новый'
+        sent: 'Отправлен'
+        sold: 'Получена оплата'
+        returned: 'Возвращен'

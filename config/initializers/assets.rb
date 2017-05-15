@@ -13,4 +13,4 @@ Rails.application.config.assets.version = (ENV["PINSHOP_ASSETS_VERSION"] || "1.0
 Rails.application.config.assets.paths += Dir[Rails.root.join("vendor/assets/stylesheets")]
 Rails.application.config.assets.paths += Dir[Rails.root.join("vendor/assets/images")]
 Rails.application.config.assets.precompile << /.(?:svg|eot|woff|ttf|otf)z/
-Rails.application.config.assets.precompile += %w( style ckeditor/* )
+Rails.application.config.assets.precompile += %w( mailers/message style ckeditor/* )

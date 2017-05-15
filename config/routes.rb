@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :orders
+  resources :orders do
+    get 'status'
+    get 'status_error'
+  end
   resources :line_items
   resources :carts
   root 'home#index'

@@ -12,6 +12,8 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  comment    :text
+#  status     :integer          default("newly")
+#  token      :string
 #
 
 class Order < ApplicationRecord
@@ -22,6 +24,14 @@ class Order < ApplicationRecord
     'prepay' => 1
   }
 
+  enum status: {
+    'newly' => 0,
+    'sent' => 1,
+    'sold' => 2,
+    'returned' => 3,
+  }
+
+  has_secure_token
   has_many :line_items, dependent: :destroy
 
   accepts_nested_attributes_for :line_items
@@ -39,5 +49,9 @@ class Order < ApplicationRecord
 
   def remove_line_items_from_cart
     line_items.update(cart_id: nil)
+  end
+
+  def regenerate_token
+    update token: SecureRandom::base58(24)
   end
 end

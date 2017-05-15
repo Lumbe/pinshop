@@ -1,0 +1,16 @@
+= content_for :title do
+  Статус заказа №#{@order.id} - #{@order.status}
+.columns-container
+  #columns.container
+    %h2.page-heading
+      %span.page-heading-title2
+        Статус заказа №#{@order.id} -
+        = I18n.t("activerecord.attributes.order.status.#{@order.status}")
+    .page-content.checkout-page
+      .row
+        .col-md-12
+          .alert.alert-success
+            Статус заказа №#{@order.id} успешно изменен.
+            %br
+            Текущий статус -
+            = I18n.t("activerecord.attributes.order.status.#{@order.status}")

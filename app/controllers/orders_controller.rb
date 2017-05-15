@@ -35,8 +35,7 @@ class OrdersController < ApplicationController
     @order.add_line_items_from_cart(@cart)
     respond_to do |format|
       if @order.save
-        mail = MessageMailer.new_order('pin-shop@mail.ua', @order)
-        mail.deliver
+        MessageMailer.order_notification(@order)
         format.html
         format.js
       else
@@ -60,6 +59,32 @@ class OrdersController < ApplicationController
     redirect_to orders_url, notice: 'Order was successfully destroyed.'
   end
 
+  def status
+    token = params['token']
+    order_token = token[0..23]
+    @order = Order.find_by(token: order_token)
+
+    if @order
+      @order.regenerate_token
+      case params[:status]
+      when 'sent'
+        @order.sent!
+        MessageMailer.order_notification(@order)
+      when 'sold'
+        @order.sold!
+        MessageMailer.order_notification(@order)
+      when 'returned'
+        @order.returned!
+        MessageMailer.order_notification(@order)
+      end
+    else
+      redirect_to order_status_error_url
+    end
+  end
+
+  def status_error
+  end
+
   def thank_you
     respond_to do |format|
       format.html {redirect_to root_url}
@@ -69,18 +94,29 @@ class OrdersController < ApplicationController
 
   private
 
-    def ensure_cart_isnt_empty
-      if @cart.line_items.empty?
-        redirect_to root_url, notice: 'Добавьте товары в корзину'
+  def auth_user
+    if request.get? && !params[:token].blank?
+      token = params[:token]
+      user_id = token[24..-1]
+      user = User.find(user_id)
+      if user && Devise.secure_compare(user.authenticatable_salt, params[:user_token])
+        sign_in user, store: false
       end
     end
-    # Use callbacks to share common setup or constraints between actions.
-    def set_order
-      @order = Order.find(params[:id])
-    end
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def order_params
-      params.require(:order).permit(:name, :phone, :email, :city, :warehouse, :pay_type, :comment, line_items_attributes: [:id, :quantity])
+  def ensure_cart_isnt_empty
+    if @cart.line_items.empty?
+      redirect_to root_url, notice: 'Добавьте товары в корзину'
     end
+  end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_order
+    @order = Order.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def order_params
+    params.require(:order).permit(:name, :phone, :email, :city, :warehouse, :pay_type, :comment, line_items_attributes: [:id, :quantity])
+  end
 end

@@ -1,0 +1,103 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    = stylesheet_link_tag 'mailers/message', media: 'all'
+  %body
+    .content
+      .row
+        .col-md-12
+          %h3
+            Заказ № #{@order.id}
+            - case @order.status
+            - when 'newly'
+              %span.label.label-danger= I18n.t("activerecord.attributes.order.status.#{@order.status}")
+            - when 'sent'
+              %span.label.label-warning= I18n.t("activerecord.attributes.order.status.#{@order.status}")
+            - when 'sold'
+              %span.label.label-success= I18n.t("activerecord.attributes.order.status.#{@order.status}")
+            - when 'returned'
+              %span.label.label-default= I18n.t("activerecord.attributes.order.status.#{@order.status}")
+      .row
+        .col-md-12
+          Имя:
+          %strong #{@order.name}
+      .row
+        .col-md-12
+          Телефон:
+          %strong #{@order.phone}
+      - if @order.email.present?
+        .row
+          .col-md-12
+            Электронная почта:
+            %strong #{@order.email}
+      .row
+        .col-md-12
+          %h3 Адрес доставки
+          Город:
+          %strong #{@order.city}
+          %br
+          Новая Почта:
+          %strong #{@order.warehouse}
+      .row
+        .col-md-12
+          Тип доставки:
+          - case @order.pay_type
+          - when "on_delivery"
+            %strong Наложенным платежом
+          - when "prepay"
+            %strong Предоплата на карту Приватбанка
+      - if @order.comment.present?
+        .row
+          .col-md-12
+            Комментарий:
+            %strong #{@order.comment}
+      .row
+        .col-md-12
+          %table.table.table-bordered.table-responsive
+            %caption
+              Товаров:
+              %strong= @order.total_items
+            %thead
+              %tr.text-center.active
+                %th Товар
+                %th Описание
+                %th Цена
+                %th К-во
+                %th Сумма
+            %tbody
+              - if @order.line_items.present?
+                - @order.line_items.each do |line_item|
+                  = render partial: 'line_items/order_line_item', locals: {line_item: line_item}
+            %tfoot
+              %tr.active
+                %td{:colspan => "2"}
+                %td{:colspan => "2"}
+                  %strong Сумма заказа
+                %td{:colspan => "2"}
+                  %strong= number_to_currency(@order.total_price, locale: :uk)
+      - case @order.status
+      - when 'newly'
+        .row
+          .col-md-4.col-md-offset-4
+            .panel.panel-default
+              .panel-heading
+                %h2.panel-title.text-uppercase.text-center Изменить статус заказа на
+              .panel-body.text-center
+                = link_to 'Отправлен',
+                  order_status_url(order_id: @order.id, token: @token, status: 'sent'),
+                  class: 'btn btn-warning btn-lg'
+      - when 'sent'
+        .row
+          .col-md-4.col-md-offset-4
+            .panel.panel-default
+              .panel-heading
+                %h3.panel-title.text-uppercase.text-center Изменить статус заказа на
+              .panel-body.text-center
+                = link_to 'Оплата получена',
+                  order_status_url(order_id: @order.id, token: @token, status: 'sold'),
+                  class: 'btn btn-success btn-lg'
+                .button-separator или
+                = link_to 'Посылка возвращена',
+                  order_status_url(order_id: @order.id, token: @token, status: 'returned'),
+                  class: 'btn btn-default btn-lg'
