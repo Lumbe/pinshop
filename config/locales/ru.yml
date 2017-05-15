@@ -263,7 +263,7 @@ ru:
   activerecord:
     attributes:
       order:
-        status:
+        statuses:
           newly: Новый
           sent: Отправлен
           sold: Получена оплата

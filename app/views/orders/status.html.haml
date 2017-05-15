@@ -5,7 +5,7 @@
     %h2.page-heading
       %span.page-heading-title2
         Статус заказа №#{@order.id} -
-        = I18n.t("activerecord.attributes.order.status.#{@order.status}")
+        = I18n.t("activerecord.attributes.order.statuses.#{@order.status}")
     .page-content.checkout-page
       .row
         .col-md-12
@@ -13,4 +13,4 @@
             Статус заказа №#{@order.id} успешно изменен.
             %br
             Текущий статус -
-            = I18n.t("activerecord.attributes.order.status.#{@order.status}")
+            = I18n.t("activerecord.attributes.order.statuses.#{@order.status}")

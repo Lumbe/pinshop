@@ -11,13 +11,13 @@
             Заказ № #{@order.id}
             - case @order.status
             - when 'newly'
-              %span.label.label-danger= I18n.t("activerecord.attributes.order.status.#{@order.status}")
+              %span.label.label-danger= I18n.t("activerecord.attributes.order.statuses.#{@order.status}")
             - when 'sent'
-              %span.label.label-warning= I18n.t("activerecord.attributes.order.status.#{@order.status}")
+              %span.label.label-warning= I18n.t("activerecord.attributes.order.statuses.#{@order.status}")
             - when 'sold'
-              %span.label.label-success= I18n.t("activerecord.attributes.order.status.#{@order.status}")
+              %span.label.label-success= I18n.t("activerecord.attributes.order.statuses.#{@order.status}")
             - when 'returned'
-              %span.label.label-default= I18n.t("activerecord.attributes.order.status.#{@order.status}")
+              %span.label.label-default= I18n.t("activerecord.attributes.order.statuses.#{@order.status}")
       .row
         .col-md-12
           Имя:

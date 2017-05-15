@@ -21,7 +21,7 @@ class MessageMailer < ApplicationMailer
     user_id = User.find_by(email: email).id.to_s
     @token = @order.token + user_id
     mail to: email,
-         subject: "Заказ №#{@order.id} - #{I18n.t("activerecord.attributes.order.status.#{@order.status}")}"
+         subject: "Заказ №#{@order.id} - #{I18n.t("activerecord.attributes.order.statuses.#{@order.status}")}"
   end
 
 end
