@@ -35,7 +35,9 @@
   .box-border
     .row
       .col-sm-6
-        = f.label :name, 'Имя'
+        = f.label :name, 'Имя и Фамилия'
+        %a.has-tooltip{title: 'На этого человека будет отправлен заказ Новой Почтой'}
+          %span.glyphicon.glyphicon-question-sign
         = f.text_field :name, class: 'form-control input', required: true
         = f.label :phone, 'Телефон'
         = f.text_field :phone, class: 'form-control input', required: true
