@@ -70,6 +70,9 @@ class OrdersController < ApplicationController
       when 'sent'
         @order.sent!
         MessageMailer.order_notification(@order)
+      when 'rejected'
+        @order.rejected!
+        MessageMailer.order_notification(@order)
       when 'sold'
         @order.sold!
         MessageMailer.order_notification(@order)

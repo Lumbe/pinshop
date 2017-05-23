@@ -18,6 +18,8 @@
               %span.label.label-success= I18n.t("activerecord.attributes.order.statuses.#{@order.status}")
             - when 'returned'
               %span.label.label-default= I18n.t("activerecord.attributes.order.statuses.#{@order.status}")
+            - when 'rejected'
+              %span.label.label-default= I18n.t("activerecord.attributes.order.statuses.#{@order.status}")
       .row
         .col-md-12
           Имя:
@@ -87,6 +89,10 @@
                 = link_to 'Отправлен',
                   order_status_url(order_id: @order.id, token: @token, status: 'sent'),
                   class: 'btn btn-warning btn-lg'
+                .button-separator или
+                = link_to 'Отказ',
+                  order_status_url(order_id: @order.id, token: @token, status: 'rejected'),
+                  class: 'btn btn-default btn-lg'
       - when 'sent'
         .row
           .col-md-4.col-md-offset-4

@@ -29,6 +29,7 @@ class Order < ApplicationRecord
     'sent' => 1,
     'sold' => 2,
     'returned' => 3,
+    'rejected' => 4
   }
 
   has_secure_token
