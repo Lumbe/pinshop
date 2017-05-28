@@ -14,3 +14,11 @@
             %br
             Текущий статус -
             = I18n.t("activerecord.attributes.order.statuses.#{@order.status}")
+      - if @order.sent?
+        .row
+          .col-md-12.text-center
+            = form_for @order, html: { multipart: true } do |f|
+              = f.label :waybill, 'Загрузить экспрес накладную', class: 'lead'
+              = f.file_field :waybill
+              %br
+              = f.submit 'Сохранить', class: 'btn btn-success btn-lg'

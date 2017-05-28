@@ -47,7 +47,7 @@ class OrdersController < ApplicationController
   # PATCH/PUT /orders/1
   def update
     if @order.update(order_params)
-      redirect_to @order, notice: 'Order was successfully updated.'
+      redirect_to @order, notice: 'Экспресс-накладная добавлена'
     else
       render :edit
     end
@@ -120,6 +120,6 @@ class OrdersController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def order_params
-    params.require(:order).permit(:name, :phone, :email, :city, :warehouse, :pay_type, :comment, line_items_attributes: [:id, :quantity])
+    params.require(:order).permit(:name, :phone, :email, :city, :warehouse, :pay_type, :comment, :waybill, line_items_attributes: [:id, :quantity])
   end
 end
