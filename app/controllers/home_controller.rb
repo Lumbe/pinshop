@@ -36,7 +36,7 @@ class HomeController < ApplicationController
   end
 
   def search
-    @search_products = Product.ransack(name_cont: params[:search]).result
+    @search_products = Product.ransack(name_or_slug_cont: params[:search]).result
     @products = @search_products.per_page_kaminari(params[:page]).per(8)
     render 'home/search'
   end
