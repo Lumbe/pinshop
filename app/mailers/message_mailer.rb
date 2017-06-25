@@ -1,5 +1,5 @@
 class MessageMailer < ApplicationMailer
-  default from: "PinShop <postmaster@mg.pinshop.com.ua>"
+  default from: "PinShop <postmaster@pinshop.com.ua>"
 
   def feedback(email, message)
     @email = email
