@@ -66,7 +66,7 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :mailgun
   config.action_mailer.mailgun_settings = {
     api_key: 'key-a59abbc67d0dca5f43905227e9cf42ba',
-    domain: 'mg.pinshop.com.ua'
+    domain: 'pinshop.com.ua'
   }
 
 end
